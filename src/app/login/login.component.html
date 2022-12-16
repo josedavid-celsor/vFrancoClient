@@ -1,0 +1,27 @@
+<form [formGroup]="FormLogin">
+    <h1>Login</h1>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your username</mat-label>
+            <input matInput formControlName="username" required>
+            <mat-error *ngIf="FormLogin.get('username').hasError('required')">Este campo es obligatorio</mat-error>
+            <mat-error *ngIf="FormLogin.get('username').hasError('minlength')">Este campo debe alcanzar los 3 caracteres</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+    <div>
+        <button mat-raised-button color="primary" (click)="inicioSesion()">Iniciar Sesion</button>
+    </div>
+</form>
+
+{{FormLogin.value | json}}

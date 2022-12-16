@@ -1,0 +1,53 @@
+<form [formGroup]="FormRegistro">
+    <h1>Register</h1>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your name</mat-label>
+            <input matInput formControlName="name" required>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your surname</mat-label>
+            <input matInput formControlName="surname" required>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your lastname</mat-label>
+            <input matInput formControlName="lastname" required>
+        </mat-form-field>
+    </div>
+
+    <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your email</mat-label>
+          <input matInput placeholder="pat@example.com" formControlName="email" required>
+
+        </mat-form-field>
+      </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your username</mat-label>
+            <input matInput formControlName="username" required>
+            <mat-error *ngIf="FormRegistro.get('username').hasError('required')">Este campo es obligatorio</mat-error>
+            <mat-error *ngIf="FormRegistro.get('username').hasError('minlength')">Este campo debe alcanzar los 3 caracteres</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+    <div>
+        <button mat-raised-button color="primary" (click)="register()">Sign up</button>
+    </div>
+
+    
+</form>
