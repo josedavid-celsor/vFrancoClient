@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Producto } from '../interfaces/Producto';
 import { Observable } from 'rxjs';
 import { User } from '../interfaces/User';
-import { UrlSerializer } from '@angular/router';
 import { RestService } from './rest.service';
 
 @Injectable()
@@ -49,7 +47,7 @@ constructor(
 
     })
   }
-  recuperarProductos(): Promise<Producto[]>{
+ /*  recuperarProductos(): Promise<Producto[]>{
     return new Promise<Producto[]>((resolve, reject)=>{
       console.log("holi aqui toy")
       resolve([{nombre: "producto1", cantidad:4}])
@@ -62,5 +60,5 @@ constructor(
       observe.next([{nombre: "producto1", cantidad:4}])
       observe.complete()
     })
-  }
+  } */
 }

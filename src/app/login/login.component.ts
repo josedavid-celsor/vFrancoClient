@@ -16,12 +16,12 @@ export class LoginComponent {
 
  }
  ngOnInit(){
-  this.authservice.recuperarProductos().then(Productos=>{
+/*   this.authservice.recuperarProductos().then(Productos=>{
     console.log(Productos)
   })
   this.authservice.recuperarProductosOBS().subscribe(Productos=>{
     console.log(Productos)
-  })
+  }) */
   this.FormLogin = new FormGroup({
     username: new FormControl(null, [Validators.required, Validators.minLength(3)]),
     password: new FormControl(null, [Validators.required])
