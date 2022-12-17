@@ -13,12 +13,19 @@ import {MatButtonModule} from '@angular/material/button';
 import { RegistrosComponent } from './registros/registros.component'
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { InicioComponent } from './inicio/inicio.component';
+import { MenuComponent } from './menu/menu.component';
+import { AuthGuard } from './guards/auth.guard';
+import { AuthService } from './services/Auth.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegistrosComponent
+    RegistrosComponent,
+    InicioComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -31,9 +38,13 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatInputModule,
     MatButtonModule,
     MatToolbarModule,
-    MatSidenavModule
+    MatSidenavModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

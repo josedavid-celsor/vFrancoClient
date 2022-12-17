@@ -1,0 +1,15 @@
+div{
+    text-align: center;
+}
+
+.img{
+    background-image: url("../../assets/img/banner.jpg");
+    background-color: #cccccc;
+    background-repeat: no-repeat;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    background-size: contain;
+}

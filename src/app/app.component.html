@@ -1,21 +1,30 @@
 <!-- Barra de navegación -->
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" fxLayout="row wrap">
     <button mat-icon-button (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
     </button>
     <span>{{title}}</span>
+    <div class="opcionesMenu">
+        <button mat-raised-button color="none" autosize>Productos</button>
+        <button mat-raised-button color="none" autosize>Celusos y textiles</button>
+        <button mat-raised-button color="none" autosize>Complementos de Higuiene</button>
+        <button mat-raised-button color="none" autosize>Maquina de Limpieza</button>
+    </div>
+    
     <span class="example-spacer"></span>
+    <button mat-raised-button color="none" autosize [routerLink]="['login']">Sign In</button>
+    <button mat-raised-button color="none" autosize [routerLink]="['registro']">Sign up</button>
 </mat-toolbar>
 
 
 <!-- Contenido de la web -->
 <mat-drawer-container class="example-container" autosize>
     <mat-drawer #drawer class="example-sidenav" mode="side">
-        <div class="elementoBarra" [routerLink]="['usuario/login']"> Inicio de sesión</div>
-        <div class="elementoBarra" [routerLink]="['libro/expositor']"> Expositor de libros</div>
-        <div class="elementoBarra" [routerLink]="['libro/creacionLibro']"> Creación de libros</div>
-        <div class="elementoBarra" [routerLink]="['autor/expositorAutor']"> Expositor de autores</div>
-        <div class="elementoBarra" [routerLink]="['autor/creacionAutor']"> Creación de autores</div>
+        <div class="elementoBarra" [routerLink]="['libro/expositor']">Inicio</div>
+        <div class="elementoBarra" [routerLink]="['libro/creacionLibro']"> Productos Químicos</div>
+        <div class="elementoBarra" [routerLink]="['autor/expositorAutor']"> Celulosas y Textiles</div>
+        <div class="elementoBarra" [routerLink]="['autor/creacionAutor']"> Complementos de Higuiene</div>
+        <div class="elementoBarra" [routerLink]="['autor/creacionAutor']"> Maquina de Limpieza</div>
     </mat-drawer>
 
     <div class="example-sidenav-content">
