@@ -25,7 +25,7 @@ constructor(
     })
   }
 
-  register(nombre:string, dni: string,
+  /* register(nombre:string, dni: string,
     apellido: string,
     apellido2: string,
     email: string,
@@ -46,7 +46,7 @@ constructor(
       })
 
     })
-  }
+  } */
  /*  recuperarProductos(): Promise<Producto[]>{
     return new Promise<Producto[]>((resolve, reject)=>{
       console.log("holi aqui toy")
