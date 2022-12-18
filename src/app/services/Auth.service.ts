@@ -25,28 +25,19 @@ constructor(
     })
   }
 
-  /* register(nombre:string, dni: string,
-    apellido: string,
-    apellido2: string,
-    email: string,
-    username: string, password:string ):Observable<User>{
+  register(usuario: User):Observable<User>{
     return new Observable<User>(observe=>{
       observe.next()
-      this.restservice.peticionHttp(this.authapi + "/register", "post", {
-        nombre,
-        apellido,
-        apellido2,
-        email,
-        username,
-        password
-      }).subscribe(respuestaapi=>{
+      this.restservice.peticionHttp(this.authapi + "/register", "post", 
+        usuario
+      ).subscribe(respuestaapi=>{
         if(respuestaapi){
           localStorage.setItem("token", respuestaapi.token)
         }
       })
 
     })
-  } */
+  } 
  /*  recuperarProductos(): Promise<Producto[]>{
     return new Promise<Producto[]>((resolve, reject)=>{
       console.log("holi aqui toy")

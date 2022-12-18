@@ -12,7 +12,7 @@ export class RestService {
   /** Cabeceras */
   private headers: HttpHeaders;
   /** Url de la API */
-  private apiUrl: string;
+  public apiUrl: string;
   /** Para el control de carga del spinner */
   public isWaiting: EventEmitter<boolean>
   /** Número de solicitudes en curso */

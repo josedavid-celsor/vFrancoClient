@@ -18,6 +18,7 @@ import { MenuComponent } from './menu/menu.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './services/Auth.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ShopComponent } from './shop/shop.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     RegistrosComponent,
     InicioComponent,
-    MenuComponent
+    MenuComponent,
+    ShopComponent
   ],
   imports: [
     BrowserModule,

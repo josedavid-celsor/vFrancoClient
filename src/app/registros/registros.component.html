@@ -3,19 +3,25 @@
     <div>
         <mat-form-field appearance="fill">
             <mat-label>Enter your name</mat-label>
-            <input matInput formControlName="name" required>
+            <input matInput formControlName="nombre" required>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your dni</mat-label>
+            <input matInput formControlName="dni" required>
         </mat-form-field>
     </div>
     <div>
         <mat-form-field appearance="fill">
             <mat-label>Enter your surname</mat-label>
-            <input matInput formControlName="surname" required>
+            <input matInput formControlName="apellido">
         </mat-form-field>
     </div>
     <div>
         <mat-form-field appearance="fill">
             <mat-label>Enter your lastname</mat-label>
-            <input matInput formControlName="lastname" required>
+            <input matInput formControlName="apellido2">
         </mat-form-field>
     </div>
 
@@ -46,7 +52,7 @@
         </mat-form-field>
     </div>
     <div>
-        <button mat-raised-button color="primary" (click)="register()">Sign up</button>
+        <button mat-raised-button color="primary" (click)="register()" [disabled]="FormRegistro.invalid">Sign up</button>
     </div>
 
     

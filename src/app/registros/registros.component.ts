@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../services/Auth.service';
+import { User } from '../interfaces/User';
 
 @Component({
   selector: 'app-registros',
@@ -10,25 +12,27 @@ export class RegistrosComponent {
   hide = true;
 
   FormRegistro: FormGroup; 
-  
+  constructor(private authservice: AuthService){
+    
+  }
   ngOnInit(){
    this.FormRegistro = new FormGroup({
      username: new FormControl(null, [Validators.required, Validators.minLength(3)]),
      password: new FormControl(null, [Validators.required]),
-     surname: new FormControl(null),
+     apellido: new FormControl(null, [Validators.required]),
      email: new FormControl(null, [Validators.required]),
-     name: new FormControl(null, [Validators.required]),
-     lastname: new FormControl(null, [Validators.required]),
+     nombre: new FormControl(null, [Validators.required]),
+     apellido2: new FormControl(null),
+     dni: new FormControl(null, [Validators.required])
    });
   }
  
   register(){
    //Para sacar el valor del control de un formulario
-   const username: string = this.FormRegistro.get('username').value;
-   const password: string = this.FormRegistro.value.password;
-   const email: string = this.FormRegistro.get('email').value;
-   const lastname: string = this.FormRegistro.value.lastname;
-
- 
-  }
+  if(this.FormRegistro.valid){
+    const usuario: User = this.FormRegistro.value
+    this.authservice.register(usuario).subscribe()
+  }//Mostrar notificación de error PROXIMAMENTE
+  
+   }
 }

@@ -8,7 +8,7 @@ import { InicioComponent } from './inicio/inicio.component';
 const routes: Routes = [
   {path: "", redirectTo: "/inicio", pathMatch: "full"},
   {path: "login", component: LoginComponent, title:"Login"},
-  {path: "registro", component: RegistrosComponent, title: "Register", canActivate:[AuthGuard]},
+  {path: "registro", component: RegistrosComponent, title: "Register"},
   {path: "inicio", component: InicioComponent, title: "Inicio"}
 ];
 
