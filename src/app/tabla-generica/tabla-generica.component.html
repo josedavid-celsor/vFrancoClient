@@ -17,12 +17,11 @@
               {{elemento[atributo]}}
           </div>
         <div *ngIf="acciones" class="elementoContenido">
-            <button mat-raised-button color="accent" (click)="editClick(elemento)">Editar</button>
-            <button mat-raised-button color="warn" (click)="deleteClick(elemento)">Borrar</button>
-            <button mat-raised-button color="primary" (click)="verClick(elemento)">View</button>
+            <button mat-raised-button color="accent" (click)="editClick(elemento)"><mat-icon>edit</mat-icon></button>
+            <button mat-raised-button color="warn" (click)="deleteClick(elemento)"><mat-icon>delete</mat-icon></button>
+            <button mat-raised-button color="primary" (click)="verClick(elemento)"><mat-icon>visibility</mat-icon></button>
         </div>
       </div>
-      
   </div>
 
 

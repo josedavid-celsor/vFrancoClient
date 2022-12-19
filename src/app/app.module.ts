@@ -25,6 +25,7 @@ import { TipoProductoComponent } from './tipoProducto/tipoProducto.component';
 import { TipoProductoFormComponent } from './tipo-producto-form/tipo-producto-form.component';
 import {MatDialogModule} from '@angular/material/dialog'
 import { AuthedGuard } from './guards/authed.guard';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [		
@@ -51,7 +52,8 @@ import { AuthedGuard } from './guards/authed.guard';
     MatToolbarModule,
     MatSidenavModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    MatPaginatorModule
   ],
   providers: [
     AuthGuard,
