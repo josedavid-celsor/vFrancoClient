@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, Inject, PLATFORM_ID, EventEmitter } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { enviroment } from 'src/enviroments/enviroment';
@@ -49,7 +49,7 @@ export class RestService {
    * @param valores Valores de la petición
    * @returns Observable con el resultado de la petición
    */
-  peticionHttp(url: string, tipo: string, valores?: any): Observable<any> {
+  peticionHttp(url: string, tipo: string, valores?: any, valoresPaginacion?:HttpParams): Observable<any> {
 
     this.isWaiting.emit(true);
     this.solicitudes++;
@@ -58,6 +58,9 @@ export class RestService {
     switch (tipo) {
       case 'get':
         peticion = this.http.get(this.apiUrl + url, { observe: 'body', headers: this.headers });
+        break;
+      case 'getPaginado':
+        peticion = this.http.get(this.apiUrl + url, { observe: 'body', headers: this.headers, params:valoresPaginacion });
         break;
       case 'post':
         peticion = this.http.post(this.apiUrl + url, valores, { observe: 'body', headers: this.headers });
@@ -102,8 +105,4 @@ export class RestService {
       })
     })
   }
-
-
-
-
-}
+  }

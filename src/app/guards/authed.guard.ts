@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from '../services/Auth.service';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class AuthedGuard implements CanActivate {
   constructor(
     //Para enrutamiento
     private router: Router ,
@@ -17,10 +17,10 @@ export class AuthGuard implements CanActivate {
     /* console.log("holi aqui toy")
     this.router.navigate(['login']) */
     if(this.authservice.usuariConectado){
-      return true;
-    }else{
-      this.router.navigate(["login"]);
+      this.router.navigate(["inicio"]);
       return false;
+    }else{
+      return true;
     }
     
   }

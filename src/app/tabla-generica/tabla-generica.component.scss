@@ -1,0 +1,59 @@
+.tablaMaterial {
+    display: block;
+    font-family: Tahoma, Verdana, sans-serif;
+}
+.contenidoTabla {
+    overflow: auto;
+    max-height: 60vh;
+}
+
+.filaContenido,
+.filaEncabezado {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 0 24px;
+}
+
+.elementoContenido,
+.elementoEncabezado {
+    flex: 1;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+.filaEncabezado {
+    background-color: #3f51b5;
+    .elementoEncabezado {
+        color: white !important;
+        font-weight: bold !important;
+        font-family: Roboto, "Helvetica Neue", sans-serif;
+        font-size: 12px;
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+        text-align: left;
+    }
+}
+
+.elementoContenido {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    text-align: left;
+}
+
+.filaContenido {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: white !important;
+}
+.filaContenido:nth-child(even) {
+    background-color: whitesmoke !important;
+}
+
+.elementoAcciones {
+    //white-space: nowrap;
+    overflow: visible;
+}
+
+.pointer {
+    cursor: pointer;
+}

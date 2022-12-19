@@ -1,19 +1,22 @@
 <!-- Barra de navegación -->
 <mat-toolbar color="primary" fxLayout="row wrap">
-    <button mat-icon-button (click)="drawer.toggle()">
+   <!--  <button mat-icon-button (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
-    </button>
+    </button> -->
     <span>{{title}}</span>
     <div class="opcionesMenu">
-        <button mat-raised-button color="none" autosize>Productos</button>
+        <button mat-raised-button color="none" autosize>Productos Químicos</button>
         <button mat-raised-button color="none" autosize>Celusos y textiles</button>
         <button mat-raised-button color="none" autosize>Complementos de Higuiene</button>
         <button mat-raised-button color="none" autosize>Maquina de Limpieza</button>
+        <button mat-raised-button color="none" autosize [routerLink]="['tipoProducto']">Tipos de Producto</button>
     </div>
     
     <span class="example-spacer"></span>
-    <button mat-raised-button color="none" autosize [routerLink]="['login']">Sign In</button>
-    <button mat-raised-button color="none" autosize [routerLink]="['registro']">Sign up</button>
+    <button mat-raised-button color="none" autosize [routerLink]="['login']" *ngIf="!userConect">Sign In</button>
+    <button mat-raised-button color="none" autosize [routerLink]="['registro']" *ngIf="!userConect">Sign up</button>
+    <span *ngIf="userConect" id="nombre">{{userConect.nombre}}</span>
+    <button mat-raised-button color="none" autosize *ngIf="userConect" (click)="logout()">Logout</button>
 </mat-toolbar>
 
 

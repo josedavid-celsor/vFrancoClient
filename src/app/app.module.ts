@@ -19,16 +19,25 @@ import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './services/Auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ShopComponent } from './shop/shop.component';
+import { TipoProductoService } from './services/TipoProducto.service';
+import { TablaGenericaComponent } from './tabla-generica/tabla-generica.component';
+import { TipoProductoComponent } from './tipoProducto/tipoProducto.component';
+import { TipoProductoFormComponent } from './tipo-producto-form/tipo-producto-form.component';
+import {MatDialogModule} from '@angular/material/dialog'
+import { AuthedGuard } from './guards/authed.guard';
 
 @NgModule({
-  declarations: [
+  declarations: [		
     AppComponent,
     LoginComponent,
     RegistrosComponent,
     InicioComponent,
     MenuComponent,
-    ShopComponent
-  ],
+    ShopComponent,
+    TablaGenericaComponent,
+    TipoProductoComponent,
+    TipoProductoFormComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -41,11 +50,14 @@ import { ShopComponent } from './shop/shop.component';
     MatButtonModule,
     MatToolbarModule,
     MatSidenavModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [
     AuthGuard,
-    AuthService
+    AuthService,
+    TipoProductoService, 
+    AuthedGuard
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,29 @@
+<div class="tablaMaterial">
+  <!-- Encabezado de la tabla -->
+  <div class="filaEncabezado">
+      <div *ngFor="let titulo of columnas" class="elementoEncabezado pointer">
+          <span>{{titulo}}</span>
+      </div>
+      <div *ngIf="acciones" class="elementoEncabezado pointer">
+        <span>Acciones</span>
+    </div>
+</div>
+  </div>
+
+  <!-- Contenido de la tabla -->
+  <div class="contenidoTabla">
+      <div *ngFor="let elemento of datos" class="filaContenido">
+          <div *ngFor="let atributo of modelos" class="elementoContenido">
+              {{elemento[atributo]}}
+          </div>
+        <div *ngIf="acciones" class="elementoContenido">
+            <button mat-raised-button color="accent" (click)="editClick(elemento)">Editar</button>
+            <button mat-raised-button color="warn" (click)="deleteClick(elemento)">Borrar</button>
+            <button mat-raised-button color="primary" (click)="verClick(elemento)">View</button>
+        </div>
+      </div>
+      
+  </div>
+
+
+  

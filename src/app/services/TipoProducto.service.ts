@@ -11,37 +11,77 @@ tipoProductoapi: string = "TipoProducto";
 constructor(private restservice: RestService, private oHttp: HttpClient) { }
 
 
-getTipoProductoPlist(page: number, size: number, termino: string, id_usertype: number, strSortField: string, strOrderDirection: string): Observable<Page<TipoProducto>> {
+getTipoProductoPlist(page?: number, size?: number, termino?: string, id_usertype?: number, strSortField?: string, strOrderDirection?: string): Observable<Page<TipoProducto>> {
   let params = new HttpParams()
-    .set("filter", termino)
+  if(page && size && termino){
+    params.set("filter", termino)
     .set("page", page)
     .set("size", size);
-  if (id_usertype != 0) {
+  }
+   
+  if (id_usertype) {
     params = params.set("usertype", id_usertype);
   }
-  if (strSortField != "") { //&sort=codigo,[asc|desc]
+  if (strSortField) { //&sort=codigo,[asc|desc]
     if (strOrderDirection != "") {
       params = params.set("sort", strSortField + "," + strOrderDirection);
     } else {
       params = params.set("sort", strSortField);
     }
   }
-  return this.oHttp.get<Page<TipoProducto>>(this.restservice.apiUrl + this.tipoProductoapi, { params: params });
+  return new Observable(observer => {
+    this.restservice.peticionHttp(this.tipoProductoapi,'getPaginado',null,params).subscribe(respuesta => {
+      observer.next(respuesta)
+      observer.complete()
+    })
+   
+  })
 }
 
-/* getOne(id: number): Observable<ITipoproducto> {
-  return this.http.get<ITipoproducto>(this.sURL + '/' + id, httpOptions);
-}
-
+/* getOne(id: number): Observable<TipoProducto> {
+  return this.restservice.peticionHttp(this.tipoProductoapi, '?parametro=1')
+}   */
+/*
 newOne(oTipoProducto: ITipoproducto2Send): Observable<number> {
   return this.http.post<number>(this.sURL + '/', oTipoProducto, httpOptions);
 }
 
 updateOne(oTipoProducto: ITipoproducto2Send): Observable<number> {
   return this.http.put<number>(this.sURL + '/', oTipoProducto, httpOptions);
+}*/
+create(tipoProducto: TipoProducto){
+  return new Observable<TipoProducto>(observe=>{
+    this.restservice.peticionHttp(this.tipoProductoapi + "/", "post", tipoProducto).subscribe(respuestaapi=>{
+      console.log(respuestaapi)
+      
+      observe.next(respuestaapi)
+      observe.complete()
+    })
+  })
 }
 
-removeOne(id: number): Observable<number> {
-  return this.http.delete<number>(this.sURL + '/' + id, httpOptions);
-}  */
+edit(tipoProducto: TipoProducto){
+  return new Observable<TipoProducto>(observe=>{
+    this.restservice.peticionHttp(this.tipoProductoapi + "/" + tipoProducto.id, "put", tipoProducto).subscribe(respuestaapi=>{
+      console.log(respuestaapi)
+      
+      observe.next(respuestaapi)
+      observe.complete()
+    })
+  })
+}
+
+delete(id: number ):Observable<boolean>{
+  return new Observable<boolean>(observe=>{
+    this.restservice.peticionHttp(this.tipoProductoapi +  "/" + id, "delete").subscribe(respuestaapi=>{
+      console.log(respuestaapi)
+      
+        observe.next(true)
+        observe.complete()
+      
+    })
+
+  })
+}
+
 }
