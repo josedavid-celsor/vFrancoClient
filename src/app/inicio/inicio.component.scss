@@ -6,10 +6,12 @@ div{
     background-image: url("../../assets/img/banner.jpg");
     background-color: #cccccc;
     background-repeat: no-repeat;
-    width: 100%;
+    width: 100vw;
+    height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column; 
-    background-size: contain;
+    flex-direction: column;
+    background-size: cover;
 }
+/* width es vw y vh es height */
