@@ -10,8 +10,8 @@ import { AuthService } from '../services/Auth.service';
 export class LoginComponent {
   hide = true;
 
- FormLogin: FormGroup; 
- 
+ FormLogin: FormGroup;
+
  constructor(private authservice: AuthService){
 
  }
@@ -33,6 +33,6 @@ export class LoginComponent {
   const username: string = this.FormLogin.get('username').value;
   const password: string = this.FormLogin.value.password;
   this.authservice.loginRequest(username, password).subscribe()
-
+  return false;
  }
 }

@@ -9,9 +9,9 @@
         <button mat-flat-button color="none" autosize>Celusos y textiles</button>
         <button mat-flat-button color="none" autosize>Complementos de Higuiene</button>
         <button mat-flat-button color="none" autosize>Maquina de Limpieza</button>
-        <button mat-flat-button color="none" autosize [routerLink]="['tipoProducto']">Tipos de Producto</button>
+        <button mat-flat-button color="none" autosize [routerLink]="['tipoProducto']" *ngIf="userConect">Tipos de Producto</button>
     </div>
-    
+
     <span class="example-spacer"></span>
     <button mat-raised-button color="none" autosize [routerLink]="['login']" *ngIf="!userConect">Sign In</button>
     <button mat-raised-button color="none" autosize [routerLink]="['registro']" *ngIf="!userConect">Sign up</button>

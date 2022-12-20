@@ -13,9 +13,9 @@ usuariConectado: User;
 constructor(
   private restservice: RestService,
   private routed: Router
-) { 
-  if(localStorage.getItem('user')){ 
-    
+) {
+  if(localStorage.getItem('user')){
+
     this.usuariConectado = JSON.parse(localStorage.getItem('user'))
 
   }
@@ -31,7 +31,8 @@ constructor(
         if(respuestaapi){
           localStorage.setItem("token", respuestaapi.token)
           localStorage.setItem("user", JSON.stringify(respuestaapi))
-          location.reload()
+          //NO HACER
+          /* location.reload() */
         }
       })
 
@@ -41,7 +42,7 @@ constructor(
   register(usuario: User):Observable<User>{
     return new Observable<User>(observe=>{
       observe.next()
-      this.restservice.peticionHttp(this.authapi + "/register", "post", 
+      this.restservice.peticionHttp(this.authapi + "/register", "post",
         usuario
       ).subscribe(respuestaapi=>{
         if(respuestaapi){
@@ -50,7 +51,7 @@ constructor(
       })
 
     })
-  } 
+  }
 
   logout(){
     localStorage.clear();
