@@ -5,8 +5,13 @@
 .contenidoTabla {
     overflow: auto;
     max-height: 60vh;
+ 
 }
 
+#tablacompleta{
+    margin-left: 5%;
+    margin-right: 5%;
+}
 .filaContenido,
 .filaEncabezado {
     display: flex;

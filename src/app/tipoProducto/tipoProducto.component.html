@@ -1,6 +1,6 @@
 <h1>Tipo Producto Lista</h1>
 <div>
-  <button mat-raised-button color="accent" (click)="create()">Create</button>
+  <button mat-raised-button color="accent" (click)="create()" id="create">Create</button>
   <app-tabla-generica [datos]="listadoTipoProducto" [modelos]="modeloTipo" [columnas]="columnasTipo" [acciones]="true" (view)="getOne($event)" (borrado)="delete($event)" (editar)="edit($event)">
   
   </app-tabla-generica>
