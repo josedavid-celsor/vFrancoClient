@@ -1,73 +1,95 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { User } from '../interfaces/User';
 import { RestService } from './rest.service';
 import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
-login: boolean = false;
-authapi: string = "Auth";
-usuariConectado: User;
+  login: boolean = false;
+  authapi: string = "Auth";
+  usuariConectado: User;
+  usuarioConectado$: Subject<User> = new Subject();
 
-constructor(
-  private restservice: RestService,
-  private routed: Router
-) { 
-  if(localStorage.getItem('user')){ 
-    
-    this.usuariConectado = JSON.parse(localStorage.getItem('user'))
+  constructor(
+    private restservice: RestService,
+    private routed: Router
+  ) {
+    if (localStorage.getItem('user')) {
 
+      this.usuariConectado = JSON.parse(localStorage.getItem('user'))
+      this.usuarioConectado$.next(JSON.parse(localStorage.getItem('user')))
+      console.log(this.usuarioConectado$)
+    }
   }
- }
 
-  loginRequest(username:string, password:string ):Observable<User>{
-    return new Observable<User>(observe=>{
+  getUserConnected(): boolean {
+    if (localStorage.getItem('user')) {
+      return true;
+    }
+  }
+  getUser() {
+    return JSON.parse(localStorage.getItem('user'));
+  }
+  loginRequest(username: string, password: string): Observable<User> {
+    return new Observable<User>(observe => {
       observe.next()
       this.restservice.peticionHttp(this.authapi + "/token", "post", {
         username,
         password
-      }).subscribe(respuestaapi=>{
-        if(respuestaapi){
+      }).subscribe(respuestaapi => {
+        if (respuestaapi) {
           localStorage.setItem("token", respuestaapi.token)
           localStorage.setItem("user", JSON.stringify(respuestaapi))
-          location.reload()
+          this.usuarioConectado$.next(respuestaapi);
+          this.routed.navigate(['inicio']);
         }
       })
 
     })
   }
 
-  register(usuario: User):Observable<User>{
-    return new Observable<User>(observe=>{
+  register(usuario: User): Observable<User> {
+    return new Observable<User>(observe => {
       observe.next()
-      this.restservice.peticionHttp(this.authapi + "/register", "post", 
+      this.restservice.peticionHttp(this.authapi + "/register", "post",
         usuario
-      ).subscribe(respuestaapi=>{
-        if(respuestaapi){
+      ).subscribe(respuestaapi => {
+        if (respuestaapi) {
           localStorage.setItem("token", respuestaapi.token)
+          this.usuarioConectado$.next(respuestaapi);
         }
       })
 
     })
-  } 
+  }
 
-  logout(){
+  logout() {
     localStorage.clear();
-    location.reload();
-  }
- /*  recuperarProductos(): Promise<Producto[]>{
-    return new Promise<Producto[]>((resolve, reject)=>{
-      console.log("holi aqui toy")
-      resolve([{nombre: "producto1", cantidad:4}])
-    })
+    this.usuarioConectado$.next(null);
   }
 
-  recuperarProductosOBS(): Observable<Producto[]>{
-    return new Observable<Producto[]>(observe=>{
-      console.log("Me estoy ejecutando")
-      observe.next([{nombre: "producto1", cantidad:4}])
-      observe.complete()
+  isAdmin(): boolean {
+    const user: User = JSON.parse(localStorage.getItem('user'))
+    if (!user) {
+      return false
+    }
+    return user.authority.id === 1
+  }
+
+  isAdminRequest(): Observable<boolean> {
+    return new Observable<boolean>(observe => {
+      const token: string =localStorage.getItem('token')
+      if (token) {
+        this.restservice.peticionHttp(this.authapi + "/verifyadmin" + "?tokenadmin=" + token, "get"
+        ).subscribe(respuestaapi => {
+          observe.next(respuestaapi)
+          observe.complete()
+        })
+      } else {
+        observe.next(false)
+        observe.complete()
+      }
     })
-  } */
+  }
 }

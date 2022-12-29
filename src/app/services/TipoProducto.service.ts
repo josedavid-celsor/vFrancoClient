@@ -10,27 +10,31 @@ export class TipoProductoService {
 tipoProductoapi: string = "TipoProducto";
 constructor(private restservice: RestService, private oHttp: HttpClient) { }
 
-
+/* http://localhost:8082/TipoProducto?page=1&size=5&direction=Sort.Direction.DESC */
 getTipoProductoPlist(page?: number, size?: number, termino?: string, id_usertype?: number, strSortField?: string, strOrderDirection?: string): Observable<Page<TipoProducto>> {
-  let params = new HttpParams()
-  if(page && size && termino){
-    params.set("filter", termino)
-    .set("page", page)
-    .set("size", size);
-  }
+ 
+  let pagination = "?";
+  if(page) pagination += `page=${page}&`
+  if(size) pagination += `size=${size}&`
+  if(termino) pagination += `filter=${termino}&`
+  
    
-  if (id_usertype) {
+/*   if (id_usertype) {
     params = params.set("usertype", id_usertype);
+    console.log("por que no funcionas?")
   }
   if (strSortField) { //&sort=codigo,[asc|desc]
     if (strOrderDirection != "") {
       params = params.set("sort", strSortField + "," + strOrderDirection);
+      console.log("por que no funcionas?")
     } else {
       params = params.set("sort", strSortField);
+      console.log("por que no funcionas?")
     }
-  }
+  } */
+ 
   return new Observable(observer => {
-    this.restservice.peticionHttp(this.tipoProductoapi,'getPaginado',null,params).subscribe(respuesta => {
+    this.restservice.peticionHttp(this.tipoProductoapi,'getPaginado',null,pagination).subscribe(respuesta => {
       observer.next(respuesta)
       observer.complete()
     })
@@ -52,7 +56,6 @@ updateOne(oTipoProducto: ITipoproducto2Send): Observable<number> {
 create(tipoProducto: TipoProducto){
   return new Observable<TipoProducto>(observe=>{
     this.restservice.peticionHttp(this.tipoProductoapi + "/", "post", tipoProducto).subscribe(respuestaapi=>{
-      console.log(respuestaapi)
       
       observe.next(respuestaapi)
       observe.complete()
@@ -63,7 +66,6 @@ create(tipoProducto: TipoProducto){
 edit(tipoProducto: TipoProducto){
   return new Observable<TipoProducto>(observe=>{
     this.restservice.peticionHttp(this.tipoProductoapi + "/" + tipoProducto.id, "put", tipoProducto).subscribe(respuestaapi=>{
-      console.log(respuestaapi)
       
       observe.next(respuestaapi)
       observe.complete()
@@ -74,7 +76,6 @@ edit(tipoProducto: TipoProducto){
 delete(id: number ):Observable<boolean>{
   return new Observable<boolean>(observe=>{
     this.restservice.peticionHttp(this.tipoProductoapi +  "/" + id, "delete").subscribe(respuestaapi=>{
-      console.log(respuestaapi)
       
         observe.next(true)
         observe.complete()

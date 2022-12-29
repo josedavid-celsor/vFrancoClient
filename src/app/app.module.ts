@@ -18,14 +18,14 @@ import { MenuComponent } from './menu/menu.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './services/Auth.service';
 import { HttpClientModule } from '@angular/common/http';
-import { ShopComponent } from './shop/shop.component';
 import { TipoProductoService } from './services/TipoProducto.service';
-import { TablaGenericaComponent } from './tabla-generica/tabla-generica.component';
 import { TipoProductoComponent } from './tipoProducto/tipoProducto.component';
-import { TipoProductoFormComponent } from './tipo-producto-form/tipo-producto-form.component';
 import {MatDialogModule} from '@angular/material/dialog'
 import { AuthedGuard } from './guards/authed.guard';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { GTFormModule, GTFormService, GTTableModule } from 'ngx-generic-tools';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AdminGuard } from './guards/admin.guard';
 
 @NgModule({
   declarations: [		
@@ -34,10 +34,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     RegistrosComponent,
     InicioComponent,
     MenuComponent,
-    ShopComponent,
-    TablaGenericaComponent,
-    TipoProductoComponent,
-    TipoProductoFormComponent
+    TipoProductoComponent
    ],
   imports: [
     BrowserModule,
@@ -53,13 +50,18 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatSidenavModule,
     HttpClientModule,
     MatDialogModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    GTTableModule,
+    MatSnackBarModule,
+    GTFormModule
   ],
   providers: [
     AuthGuard,
     AuthService,
     TipoProductoService, 
-    AuthedGuard
+    AuthedGuard,
+    GTFormService,
+    AdminGuard,
   ],
   bootstrap: [AppComponent]
 })

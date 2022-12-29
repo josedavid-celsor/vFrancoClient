@@ -10,7 +10,7 @@ import { User } from './interfaces/User';
 export class AppComponent {
   userConect: User;
   constructor(
-    private auth: AuthService
+    public auth: AuthService
   ){}
 
   title = 'vFrancoClient';
@@ -19,7 +19,16 @@ export class AppComponent {
     this.auth.logout();
   }
   ngOnInit(){
-    this.userConect = this.auth.usuariConectado
-    console.log(this.auth.usuariConectado)
+ 
+    
+  }
+  ngAfterViewInit(){
+    this.auth.usuarioConectado$.subscribe(usuario=>{
+      this.userConect = usuario;
+      console.log(this.userConect)
+    })
+    if(!this.userConect&& this.auth.getUserConnected()){
+      this.userConect = this.auth.getUser();
+    }
   }
 }

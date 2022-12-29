@@ -1,7 +1,22 @@
 <h1>Tipo Producto Lista</h1>
 <div>
   <button mat-raised-button color="accent" (click)="create()" id="create">Create</button>
-  <app-tabla-generica [datos]="listadoTipoProducto" [modelos]="modeloTipo" [columnas]="columnasTipo" [acciones]="true" (view)="getOne($event)" (borrado)="delete($event)" (editar)="edit($event)">
-  
-  </app-tabla-generica>
+  <div id="tablagenerica">
+  <form [formGroup]="FormSearch">
+    <mat-form-field>
+      <mat-label>Search</mat-label>
+      <input matInput formControlName="search" >
+    </mat-form-field>
+  </form>
+  <gt-table [data]="listadoTipoProducto" [model]="modeloTipo" [visual]="columnasTipo" *ngIf="listadoTipoProducto" [search]="false" 
+  [actions]="['editar', 'eliminarT', 'ver']" (notify)="notification($event)" [paginator]="false">
+
+  </gt-table>
+  <mat-paginator [length]="totalTipoProductos"
+              [pageSize]="5"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page"
+              (page)="pagina($event)">
+  </mat-paginator>
+</div>
 </div>

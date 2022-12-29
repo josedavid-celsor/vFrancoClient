@@ -9,14 +9,20 @@
         <button mat-flat-button color="none" autosize>Celusos y textiles</button>
         <button mat-flat-button color="none" autosize>Complementos de Higuiene</button>
         <button mat-flat-button color="none" autosize>Maquina de Limpieza</button>
-        <button mat-flat-button color="none" autosize [routerLink]="['tipoProducto']">Tipos de Producto</button>
+
+        <!-- ng container es como un div que no se renderiza luego, util para meter condiciones y bucles sin partir la extructura del html -->
+        <ng-container *ngIf="auth.isAdmin()">
+        <button mat-flat-button color="none" autosize [routerLink]="['tipoProducto']" >Tipos de Producto</button>
+        <button mat-flat-button color="none" autosize [routerLink]="['']">Producto</button>
+        <button mat-flat-button color="none" autosize [routerLink]="['']">Panel de control</button>
+        </ng-container>
     </div>
     
     <span class="example-spacer"></span>
-    <button mat-raised-button color="none" autosize [routerLink]="['login']" *ngIf="!userConect">Sign In</button>
-    <button mat-raised-button color="none" autosize [routerLink]="['registro']" *ngIf="!userConect">Sign up</button>
+    <button mat-raised-button color="none" autosize [routerLink]="['login']" *ngIf="!auth.getUserConnected()">Sign In</button>
+    <button mat-raised-button color="none" autosize [routerLink]="['registro']" *ngIf="!auth.getUserConnected()">Sign up</button>
     <span *ngIf="userConect" id="nombre">{{userConect.nombre}}</span>
-    <button mat-raised-button color="none" autosize *ngIf="userConect" (click)="logout()">Logout</button>
+    <button mat-raised-button color="none" autosize *ngIf="auth.getUserConnected()" (click)="logout()">Logout</button>
 </mat-toolbar>
 
 
