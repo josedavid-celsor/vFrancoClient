@@ -17,7 +17,7 @@
         <button mat-flat-button color="none" autosize [routerLink]="['']">Panel de control</button>
         </ng-container>
     </div>
-    
+
     <span class="example-spacer"></span>
     <button mat-raised-button color="none" autosize [routerLink]="['login']" *ngIf="!auth.getUserConnected()">Sign In</button>
     <button mat-raised-button color="none" autosize [routerLink]="['registro']" *ngIf="!auth.getUserConnected()">Sign up</button>
