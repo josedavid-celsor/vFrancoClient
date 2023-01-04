@@ -67,6 +67,7 @@ export class AuthService {
   logout() {
     localStorage.clear();
     this.usuarioConectado$.next(null);
+    this.routed.navigate(['inicio'])
   }
 
   isAdmin(): boolean {

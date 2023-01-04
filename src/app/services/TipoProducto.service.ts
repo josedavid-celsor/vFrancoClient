@@ -84,5 +84,13 @@ delete(id: number ):Observable<boolean>{
 
   })
 }
-
+generate(){
+  return new Observable<TipoProducto>(observe=>{
+    this.restservice.peticionHttp(this.tipoProductoapi + "/generate", "post").subscribe(respuestaapi=>{
+      
+      observe.next(respuestaapi)
+      observe.complete()
+    })
+  })
+}
 }

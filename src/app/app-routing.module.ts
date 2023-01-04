@@ -7,13 +7,17 @@ import { InicioComponent } from './inicio/inicio.component';
 import { TipoProductoComponent } from './tipoProducto/tipoProducto.component';
 import { AuthedGuard } from './guards/authed.guard';
 import { AdminGuard } from './guards/admin.guard';
+import { ProductoComponent } from './producto/producto.component';
+import { ShopComponent } from './shop/shop.component';
 
 const routes: Routes = [
   {path: "", redirectTo: "/inicio", pathMatch: "full"},
   {path: "login", component: LoginComponent, title:"Login", canActivate:[AuthedGuard]},
   {path: "registro", component: RegistrosComponent, title: "Register", canActivate:[AuthedGuard]},
   {path: "inicio", component: InicioComponent, title: "Inicio"},
-  {path: "tipoProducto", component: TipoProductoComponent, title: "Tipos De Productos", canActivate:[AdminGuard]}
+  {path: "tipoProducto", component: TipoProductoComponent, title: "Tipos De Productos", canActivate:[AdminGuard]},
+  {path: "producto", component: ProductoComponent, title: "Productos", canActivate:[AdminGuard]},
+  {path: "shop/:idTipo", component: ShopComponent, title: "Tienda"}
 ];
 
 @NgModule({

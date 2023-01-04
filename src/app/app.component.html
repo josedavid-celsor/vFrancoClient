@@ -5,15 +5,15 @@
     </button> -->
     <span> <a [routerLink]="['inicio']" id="logo">{{title}}</a></span>
     <div class="opcionesMenu">
-        <button mat-flat-button color="none" autosize>Productos Químicos</button>
-        <button mat-flat-button color="none" autosize>Celusos y textiles</button>
-        <button mat-flat-button color="none" autosize>Complementos de Higuiene</button>
-        <button mat-flat-button color="none" autosize>Maquina de Limpieza</button>
+        <button mat-flat-button color="none" autosize [routerLink]="['shop/59']">Productos Químicos</button>
+        <button mat-flat-button color="none" autosize [routerLink]="['shop/61']">Celusos y textiles</button>
+        <button mat-flat-button color="none" autosize [routerLink]="['shop/62']">Complementos de Higuiene</button>
+        <button mat-flat-button color="none" autosize [routerLink]="['shop/68']">Maquina de Limpieza</button>
 
         <!-- ng container es como un div que no se renderiza luego, util para meter condiciones y bucles sin partir la extructura del html -->
         <ng-container *ngIf="auth.isAdmin()">
         <button mat-flat-button color="none" autosize [routerLink]="['tipoProducto']" >Tipos de Producto</button>
-        <button mat-flat-button color="none" autosize [routerLink]="['']">Producto</button>
+        <button mat-flat-button color="none" autosize [routerLink]="['producto']">Producto</button>
         <button mat-flat-button color="none" autosize [routerLink]="['']">Panel de control</button>
         </ng-container>
     </div>

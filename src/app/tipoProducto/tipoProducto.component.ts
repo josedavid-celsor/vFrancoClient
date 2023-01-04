@@ -5,6 +5,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { GTForm, GTFormService, GTPeticionExpansion, GTPeticionPaginacion, GTTableComponent, GT_TF } from 'ngx-generic-tools';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Sort } from '@angular/material/sort';
+import { GF_Form, GF_APIRequest,  GFFormService, GF_TypeControl, GF_TypeForm } from '@aramirezj/ngx-generic-form';
+
 /**
  * 
  */
@@ -23,12 +26,12 @@ export class TipoProductoComponent implements OnInit {
   lastpage: PageEvent;
   lastsearch: string;
   //Para que el formulario al aceptar ejecute el solo la función del servicio
-  peticionUpdate: GTPeticionExpansion = new GTPeticionExpansion(this.tipoProductoService.edit.bind(this.tipoProductoService), ['OBJECT'])
-  peticionCreate: GTPeticionExpansion = new GTPeticionExpansion(this.tipoProductoService.create.bind(this.tipoProductoService), ['OBJECT'])
+  peticionUpdate: GF_APIRequest = new GF_APIRequest(this.tipoProductoService.edit.bind(this.tipoProductoService), ['OBJECT'])
+  peticionCreate: GF_APIRequest = new GF_APIRequest(this.tipoProductoService.create.bind(this.tipoProductoService), ['OBJECT'])
   /**
    * Es un formulario que muestra los campos de tipo producto y dependiendo de su tipo permitira hacer el crud
    */
-  formTipo: GTForm = new GTForm(GT_TF.CREATION, this.modeloTipo, this.columnasTipo, "Creación")
+  formTipo: GF_Form<TipoProducto> = new GF_Form(GF_TypeForm.CREATION, this.modeloTipo, this.columnasTipo, "Creación")
   /**
    * Para tener acceso a los metodos de la tabla (se usa para el refrescar tabla)
    */
@@ -36,7 +39,7 @@ export class TipoProductoComponent implements OnInit {
   @ViewChild(MatPaginator,{static:true}) paginator: MatPaginator;
   constructor(private tipoProductoService: TipoProductoService,
     private matDialog: MatDialog,
-    private formService: GTFormService ){
+    private formService: GFFormService ){
     }
     
     ngAfterViewInit(){
@@ -44,8 +47,8 @@ export class TipoProductoComponent implements OnInit {
     }
     ngOnInit(){
       this.getTipoProductoPlist();
-      this.formTipo.peticionesAPI.edition = this.peticionUpdate
-      this.formTipo.peticionesAPI.creation = this.peticionCreate
+      this.formTipo.APIRequest.edition = this.peticionUpdate
+      this.formTipo.APIRequest.creation = this.peticionCreate
       this.FormSearch = new FormGroup({
         search: new FormControl(null),
       });
@@ -60,9 +63,9 @@ export class TipoProductoComponent implements OnInit {
     }
 
     getOne(tipoProducto: TipoProducto){
-    this.formTipo.changeTypeForm(tipoProducto, GT_TF.INSPECTION, "View Tipo Producto")
+    this.formTipo.changeTypeForm(tipoProducto, GF_TypeForm.INSPECTION, "View Tipo Producto")
     //Por definición un observable necesita que alguien se suscriba para ejecutarse y hay veces que no necesitas hacer anda con la respuesta
-    this.formService.showForm(this.formTipo).subscribe();
+    this.formService.openForm(this.formTipo).subscribe();
 
   }
   /**
@@ -70,9 +73,9 @@ export class TipoProductoComponent implements OnInit {
    * @param tipoProducto 
    */
   edit(tipoProducto: TipoProducto){
-    this.formTipo.changeTypeForm(tipoProducto, GT_TF.EDITION, "Editar Tipo Producto")
+    this.formTipo.changeTypeForm(tipoProducto, GF_TypeForm.EDITION, "Editar Tipo Producto")
     this.formTipo.disableControls(['id'])
-    this.formService.showForm(this.formTipo).subscribe(tipoUpdate=>{
+    this.formService.openForm(this.formTipo).subscribe(tipoUpdate=>{
       if(tipoUpdate){
         this.getTipoProductoPlist()
       }
@@ -87,9 +90,9 @@ export class TipoProductoComponent implements OnInit {
   }
 
   create(){
-    this.formTipo.changeTypeForm(null, GT_TF.CREATION, "Crear Tipo Producto")
+    this.formTipo.changeTypeForm(null, GF_TypeForm.CREATION, "Crear Tipo Producto")
     this.formTipo.disableControls(['id']) 
-    this.formService.showForm(this.formTipo).subscribe(tipoUpdate=>{
+    this.formService.openForm(this.formTipo).subscribe(tipoUpdate=>{
       if(tipoUpdate){
         this.getTipoProductoPlist()
       }
@@ -112,7 +115,7 @@ export class TipoProductoComponent implements OnInit {
       case 'editar':
         this.edit(event.elemento)
       break;
-      case 'eliminar':
+      case 'eliminarT':
         this.delete(event.elemento)
       break;
       case 'ver':
@@ -130,6 +133,16 @@ export class TipoProductoComponent implements OnInit {
     this.tipoProductoService.getTipoProductoPlist(this.lastpage?.pageIndex, this.lastpage?.pageSize, this.lastsearch).subscribe(tipoProducto =>{
       this.tablaTipos.refrescaTabla(tipoProducto.content)
       this.totalTipoProductos = tipoProducto.totalElements
+    })
+  }
+
+  ordenar(ordenacion: any){
+    console.log(ordenacion)
+  }
+
+  generate(){
+    this.tipoProductoService.generate().subscribe(tipoProducto=>{
+      this.getTiposPaginado()
     })
   }
 }

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,6 +25,12 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { GTFormModule, GTFormService, GTTableModule } from 'ngx-generic-tools';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AdminGuard } from './guards/admin.guard';
+import { ProductoComponent } from './producto/producto.component';
+import { GFGenericFormComponent } from '@aramirezj/ngx-generic-form';
+import { GFFormService } from '@aramirezj/ngx-generic-form';
+import { ShopComponent } from './shop/shop.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [		
@@ -34,7 +39,9 @@ import { AdminGuard } from './guards/admin.guard';
     RegistrosComponent,
     InicioComponent,
     MenuComponent,
-    TipoProductoComponent
+    TipoProductoComponent,
+    ProductoComponent,
+    ShopComponent
    ],
   imports: [
     BrowserModule,
@@ -53,7 +60,10 @@ import { AdminGuard } from './guards/admin.guard';
     MatPaginatorModule,
     GTTableModule,
     MatSnackBarModule,
-    GTFormModule
+    GTFormModule,
+    GFGenericFormComponent,
+    MatCardModule,
+    MatGridListModule
   ],
   providers: [
     AuthGuard,
@@ -62,6 +72,7 @@ import { AdminGuard } from './guards/admin.guard';
     AuthedGuard,
     GTFormService,
     AdminGuard,
+    GFFormService
   ],
   bootstrap: [AppComponent]
 })
