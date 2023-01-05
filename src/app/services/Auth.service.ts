@@ -23,14 +23,7 @@ export class AuthService {
     }
   }
 
-  getUserConnected(): boolean {
-    if (localStorage.getItem('user')) {
-      return true;
-    }
-  }
-  getUser() {
-    return JSON.parse(localStorage.getItem('user'));
-  }
+
   loginRequest(username: string, password: string): Observable<User> {
     return new Observable<User>(observe => {
       observe.next()
@@ -70,13 +63,7 @@ export class AuthService {
     this.routed.navigate(['inicio'])
   }
 
-  isAdmin(): boolean {
-    const user: User = JSON.parse(localStorage.getItem('user'))
-    if (!user) {
-      return false
-    }
-    return user.authority.id === 1
-  }
+
 
   isAdminRequest(): Observable<boolean> {
     return new Observable<boolean>(observe => {
@@ -92,5 +79,22 @@ export class AuthService {
         observe.complete()
       }
     })
+  }
+
+  isAdmin(): boolean {
+    const user: User = JSON.parse(localStorage.getItem('user'))
+    if (!user) {
+      return false
+    }
+    return user.authority.id === 1
+  }
+
+  getUserConnected(): boolean {
+    if (localStorage.getItem('user')) {
+      return true;
+    }
+  }
+  getUser() {
+    return JSON.parse(localStorage.getItem('user'));
   }
 }

@@ -16,12 +16,7 @@ export class LoginComponent {
 
  }
  ngOnInit(){
-/*   this.authservice.recuperarProductos().then(Productos=>{
-    console.log(Productos)
-  })
-  this.authservice.recuperarProductosOBS().subscribe(Productos=>{
-    console.log(Productos)
-  }) */
+
   this.FormLogin = new FormGroup({
     username: new FormControl(null, [Validators.required, Validators.minLength(3)]),
     password: new FormControl(null, [Validators.required])
@@ -29,7 +24,7 @@ export class LoginComponent {
  }
 
  inicioSesion(){
-  //Para sacar el valor del control de un formulario
+  //Sacamos el usuario y password y lanzamos la api de login
   const username: string = this.FormLogin.get('username').value;
   const password: string = this.FormLogin.value.password;
   this.authservice.loginRequest(username, password).subscribe()

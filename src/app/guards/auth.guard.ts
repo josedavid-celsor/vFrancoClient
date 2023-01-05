@@ -14,8 +14,6 @@ export class AuthGuard implements CanActivate {
   ){}
 
   canActivate(): boolean {
-    /* console.log("holi aqui toy")
-    this.router.navigate(['login']) */
     if(this.authservice.getUserConnected()){
       return true;
     }else{
