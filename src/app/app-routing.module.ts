@@ -9,6 +9,7 @@ import { AuthedGuard } from './guards/authed.guard';
 import { AdminGuard } from './guards/admin.guard';
 import { ProductoComponent } from './producto/producto.component';
 import { ShopComponent } from './shop/shop.component';
+import { CarritoComponent } from './carrito/carrito.component';
 
 const routes: Routes = [
   {path: "", redirectTo: "/inicio", pathMatch: "full"},
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path: "inicio", component: InicioComponent, title: "Inicio"},
   {path: "tipoProducto", component: TipoProductoComponent, title: "Tipos De Productos", canActivate:[AdminGuard]},
   {path: "producto", component: ProductoComponent, title: "Productos", canActivate:[AdminGuard]},
-  {path: "shop/:idTipo", component: ShopComponent, title: "Tienda"}
+  {path: "shop/:idTipo", component: ShopComponent, title: "Tienda"},
+  {path: "carrito", component: CarritoComponent, title: "Carrito"}
 ];
 
 @NgModule({
