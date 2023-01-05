@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { AuthService } from './services/Auth.service';
 import { User } from './interfaces/User';
 
@@ -10,24 +10,28 @@ import { User } from './interfaces/User';
 export class AppComponent {
   userConect: User;
   constructor(
-    public auth: AuthService
+    public auth: AuthService,
+    private cd:ChangeDetectorRef
   ){}
 
   title = 'vFrancoClient';
 
+  /** Click del logout desde la vista */
   logout(){
     this.auth.logout();
   }
-  ngOnInit(){
- 
-    
+
+  ngAfterViewChecked(){
+    this.cd.detectChanges();
   }
   ngAfterViewInit(){
+    //Nos suscribimos al evento del usuario conectado por si hacemos un unlogin
     this.auth.usuarioConectado$.subscribe(usuario=>{
-      this.userConect = usuario;
-      console.log(this.userConect)
+     this.userConect = usuario;
     })
-    if(!this.userConect&& this.auth.getUserConnected()){
+
+    //Si no tenemos el usuario, y el usuario está conectado, lo recuperamos
+    if(!this.userConect && this.auth.getUserConnected()){
       this.userConect = this.auth.getUser();
     }
   }
