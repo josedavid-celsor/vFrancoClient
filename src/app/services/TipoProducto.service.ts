@@ -42,17 +42,6 @@ getTipoProductoPlist(page?: number, size?: number, termino?: string, id_usertype
   })
 }
 
-/* getOne(id: number): Observable<TipoProducto> {
-  return this.restservice.peticionHttp(this.tipoProductoapi, '?parametro=1')
-}   */
-/*
-newOne(oTipoProducto: ITipoproducto2Send): Observable<number> {
-  return this.http.post<number>(this.sURL + '/', oTipoProducto, httpOptions);
-}
-
-updateOne(oTipoProducto: ITipoproducto2Send): Observable<number> {
-  return this.http.put<number>(this.sURL + '/', oTipoProducto, httpOptions);
-}*/
 create(tipoProducto: TipoProducto){
   return new Observable<TipoProducto>(observe=>{
     this.restservice.peticionHttp(this.tipoProductoapi + "/", "post", tipoProducto).subscribe(respuestaapi=>{

@@ -31,6 +31,8 @@ import { GFFormService } from '@aramirezj/ngx-generic-form';
 import { ShopComponent } from './shop/shop.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { CarritoComponent } from './carrito/carrito.component';
+
 
 @NgModule({
   declarations: [		
@@ -41,7 +43,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MenuComponent,
     TipoProductoComponent,
     ProductoComponent,
-    ShopComponent
+    ShopComponent,
+    CarritoComponent
    ],
   imports: [
     BrowserModule,

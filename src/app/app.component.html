@@ -22,7 +22,8 @@
     <button mat-raised-button color="none" autosize [routerLink]="['login']" *ngIf="!auth.getUserConnected()">Sign In</button>
     <button mat-raised-button color="none" autosize [routerLink]="['registro']" *ngIf="!auth.getUserConnected()">Sign up</button>
     <span *ngIf="userConect" id="nombre">{{userConect.nombre}}</span>
-    <button mat-raised-button color="none" autosize *ngIf="auth.getUserConnected()" (click)="logout()">Logout</button>
+    <mat-icon mat-raised-button color="none" autosize *ngIf="auth.getUserConnected()" [routerLink]="['carrito']">shopping_cart</mat-icon> 
+    <mat-icon mat-raised-button color="none" autosize *ngIf="auth.getUserConnected()" (click)="logout()">logout</mat-icon> 
 </mat-toolbar>
 
 
