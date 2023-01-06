@@ -72,11 +72,7 @@ export class RestService {
         peticion = this.http.delete(this.apiUrl + url, { observe: 'body', headers: this.headers })
         break;
       case 'upFiles':
-        const formData = new FormData();
-        for (let valor of valores) {
-          formData.append(valor.name, valor)
-        }
-        peticion = this.http.post(this.apiUrl + url, formData, { observe: 'body', headers: this.headers });
+        peticion = this.http.post(this.apiUrl + url, valores, { observe: 'body', headers: this.headers });
         break;
       case 'upFile':
         const formDataUnique = new FormData();
