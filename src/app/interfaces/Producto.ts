@@ -7,4 +7,6 @@ export interface Producto {
     cantidad: number;
     precio: number;
     tipoProducto: TipoProducto;
+    images:string;
+    fotos:string[];
 }

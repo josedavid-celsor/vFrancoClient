@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Producto } from '../interfaces/Producto';
 import { MatDialog } from '@angular/material/dialog';
-import { GTForm, GTFormService, GTPeticionExpansion, GTPeticionPaginacion, GTTableComponent, GT_TF } from 'ngx-generic-tools';
+import {  GTPeticionPaginacion, GTTableComponent, GT_TF } from 'ngx-generic-tools';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ProductoService } from '../services/Producto.service';
@@ -25,12 +25,12 @@ export class ProductoComponent {
   lastsearch: string;
   listTipo: Array<TipoProducto>
   //Para que el formulario al aceptar ejecute el solo la función del servicio
-  peticionUpdate: GF_APIRequest = new GF_APIRequest(this.productoService.edit.bind(this.productoService), ['OBJECT'])
-  peticionCreate: GF_APIRequest = new GF_APIRequest(this.productoService.create.bind(this.productoService), ['OBJECT'])
+ // peticionUpdate: GF_APIRequest = new GF_APIRequest(this.productoService.edit.bind(this.productoService), ['OBJECT'])
+ // peticionCreate: GF_APIRequest = new GF_APIRequest(this.productoService.create.bind(this.productoService), ['OBJECT'])
   /**
    * Es un formulario que muestra los campos de tipo producto y dependiendo de su tipo permitira hacer el crud
    */
-  formTipo: GF_Form<Producto> = new GF_Form(GF_TypeForm.CREATION, ["id", "codigo","nombre", "cantidad", "precio", "tipoProducto"], this.columnasTipo, "Creación")
+  formTipo: GF_Form<Producto> = new GF_Form(GF_TypeForm.CREATION, ["id", "codigo","nombre", "cantidad", "precio", "tipoProducto",'fotos'], this.columnasTipo.concat(['Foto']), "Creación")
   /**
    * Para tener acceso a los metodos de la tabla (se usa para el refrescar tabla)
    */
@@ -53,8 +53,8 @@ export class ProductoComponent {
         this.formTipo.getElement("tipoProducto").list = this.listTipo
       })
       this.getProductoPlist();
-      this.formTipo.APIRequest.edition = this.peticionUpdate
-      this.formTipo.APIRequest.creation = this.peticionCreate
+     // this.formTipo.APIRequest.edition = this.peticionUpdate
+    //  this.formTipo.APIRequest.creation = this.peticionCreate
       this.FormSearch = new FormGroup({
         search: new FormControl(null),
       });
@@ -100,6 +100,8 @@ export class ProductoComponent {
     this.formTipo.disableControls(['id']) 
     this.formService.openForm(this.formTipo).subscribe(productoUpdate=>{
       if(productoUpdate){
+        this.formTipo.images.forEach(image => console.log(image))
+        this.productoService.create(productoUpdate,this.formTipo.images).subscribe();
         this.getProductoPlist()
       }
     });
@@ -145,6 +147,7 @@ export class ProductoComponent {
   configForm(){
     const typeControl: GF_FormElement = new GF_FormElement("tipoProducto", GF_TypeControl.SELECTMASTER, false, null, "nombre")
     this.formTipo.addElement("tipoProducto",typeControl)
+    this.formTipo.changeTypeControl(GF_TypeControl.FILE,["fotos"])
   }
 
   generate(){

@@ -27,6 +27,8 @@ export class ShopComponent {
   getProductByType(idTipo: number){
     /** Recogemos al menos 50 productos del tipo de producto elegido */
     this.productoService.getProductoPlist(0,50,null,null,null,null,idTipo).subscribe(filteredData=>{
+      filteredData.content.forEach(producto => producto.fotos = producto.images.split("-"));
+      
       this.productosFilter = filteredData.content
     })
   }
