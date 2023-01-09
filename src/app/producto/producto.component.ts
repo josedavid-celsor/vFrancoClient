@@ -83,7 +83,9 @@ export class ProductoComponent {
     this.formTipo.disableControls(['id'])
     this.formService.openForm(this.formTipo).subscribe(tipoUpdate=>{
       if(tipoUpdate){
-        this.getProductoPlist()
+        this.productoService.edit(tipoUpdate, this.formTipo.images).subscribe(()=>{
+          this.getProductoPlist()
+        })
       }
     });
   }
@@ -100,9 +102,9 @@ export class ProductoComponent {
     this.formTipo.disableControls(['id']) 
     this.formService.openForm(this.formTipo).subscribe(productoUpdate=>{
       if(productoUpdate){
-        this.formTipo.images.forEach(image => console.log(image))
-        this.productoService.create(productoUpdate,this.formTipo.images).subscribe();
-        this.getProductoPlist()
+        this.productoService.create(productoUpdate,this.formTipo.images).subscribe(()=>{
+          this.getProductoPlist()
+        });
       }
     });
   }
@@ -123,7 +125,7 @@ export class ProductoComponent {
       case 'editar':
         this.edit(event.elemento)
       break;
-      case 'eliminar':
+      case 'eliminarT':
         this.delete(event.elemento)
       break;
       case 'ver':

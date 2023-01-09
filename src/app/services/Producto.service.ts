@@ -38,7 +38,7 @@ export class ProductoService {
       } */
 
     return new Observable(observer => {
-      this.restservice.peticionHttp(this.productoApi+"/filtros", 'getPaginado', null, pagination).subscribe(respuesta => {
+      this.restservice.peticionHttp(this.productoApi + "/filtros", 'getPaginado', null, pagination).subscribe(respuesta => {
         observer.next(respuesta)
         observer.complete()
       })
@@ -51,8 +51,8 @@ export class ProductoService {
     delete producto['fotos'];
     finalFormData.append("producto", JSON.stringify(producto));
     images.forEach(image => {
-   
-      finalFormData.append("images",image,this.makeRandomName(this.getFormatOfFile(image as any)))
+
+      finalFormData.append("images", image, this.makeRandomName(this.getFormatOfFile(image as any)))
     });
 
     return new Observable<Producto>(observe => {
@@ -64,9 +64,18 @@ export class ProductoService {
     })
   }
 
-  edit(producto: Producto) {
+  edit(producto: Producto, images: FormData) {
+    const finalFormData: FormData = new FormData();
+    delete producto['fotos'];
+    finalFormData.append("producto", JSON.stringify(producto));
+    images.forEach(image => {
+
+      finalFormData.append("images", image, this.makeRandomName(this.getFormatOfFile(image as any)))
+    });
+
     return new Observable<Producto>(observe => {
-      this.restservice.peticionHttp(this.productoApi + "/" + producto.id, "put", producto).subscribe(respuestaapi => {
+
+      this.restservice.peticionHttp(this.productoApi + "/" + producto.id, "put", finalFormData).subscribe(respuestaapi => {
 
         observe.next(respuestaapi)
         observe.complete()

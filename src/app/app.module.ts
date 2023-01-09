@@ -32,6 +32,7 @@ import { ShopComponent } from './shop/shop.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { CarritoComponent } from './carrito/carrito.component';
+import { CartaProductoComponent } from './carta-producto/carta-producto.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { CarritoComponent } from './carrito/carrito.component';
     TipoProductoComponent,
     ProductoComponent,
     ShopComponent,
-    CarritoComponent
+    CarritoComponent,
+    CartaProductoComponent
    ],
   imports: [
     BrowserModule,
