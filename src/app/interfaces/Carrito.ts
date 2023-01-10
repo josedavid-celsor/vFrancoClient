@@ -1,6 +1,6 @@
 import { Producto } from "./Producto";
 
 export interface Carrito{
-    productos: Producto[]
+    producto: Producto
     precio: number
 }

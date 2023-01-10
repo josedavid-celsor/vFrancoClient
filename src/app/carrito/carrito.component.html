@@ -1,2 +1,9 @@
 <button mat-raised-button color="primary" (click)="comprarTodo()"> Comprar todo</button>
 <button mat-raised-button color="warn" (click)="vaciarCarrito()"> Vaciar todo</button>
+
+<mat-list>
+  <mat-list-item *ngFor="let carrito of carritoFilter">
+    {{carrito.producto.nombre}}
+  </mat-list-item>
+  <mat-divider></mat-divider>
+</mat-list>

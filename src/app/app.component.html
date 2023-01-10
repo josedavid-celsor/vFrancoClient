@@ -1,45 +1,51 @@
 <!-- Barra de navegación -->
-<mat-toolbar color="primary" fxLayout="row wrap">
-   <!-- <button mat-icon-button (click)="drawer.toggle()">
-        <mat-icon>menu</mat-icon>
-    </button> --> 
+<mat-toolbar color="primary" fxLayout="row wrap" id="toolbar">
+  <div id="btnsIzquierda">
+    <button mat-icon-button id="hamburguesa" (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
     <span> <a [routerLink]="['inicio']" id="logo">{{title}}</a></span>
     <div class="opcionesMenu">
-        <button mat-flat-button color="none" autosize [routerLink]="['shop/59']">Productos Químicos</button>
-        <button mat-flat-button color="none" autosize [routerLink]="['shop/61']">Celusos y textiles</button>
-        <button mat-flat-button color="none" autosize [routerLink]="['shop/62']">Complementos de Higuiene</button>
-        <button mat-flat-button color="none" autosize [routerLink]="['shop/68']">Maquina de Limpieza</button>
+      <button mat-flat-button color="none" autosize [routerLink]="['shop/59']">Productos Químicos</button>
+      <button mat-flat-button color="none" autosize [routerLink]="['shop/61']">Celusos y textiles</button>
+      <button mat-flat-button color="none" autosize [routerLink]="['shop/62']">Complementos de Higuiene</button>
+      <button mat-flat-button color="none" autosize [routerLink]="['shop/68']">Maquina de Limpieza</button>
 
-        <!-- ng container es como un div que no se renderiza luego, util para meter condiciones y bucles sin partir la extructura del html -->
-        <ng-container *ngIf="auth.isAdmin()">
-        <button mat-flat-button color="none" autosize [routerLink]="['tipoProducto']" >Tipos de Producto</button>
+      <!-- ng container es como un div que no se renderiza luego, util para meter condiciones y bucles sin partir la extructura del html -->
+      <ng-container *ngIf="auth.isAdmin()">
+        <button mat-flat-button color="none" autosize [routerLink]="['tipoProducto']">Tipos de Producto</button>
         <button mat-flat-button color="none" autosize [routerLink]="['producto']">Producto</button>
         <button mat-flat-button color="none" autosize [routerLink]="['']">Panel de control</button>
-        </ng-container>
+      </ng-container>
     </div>
-
-    <span class="example-spacer"></span>
-    <button mat-raised-button color="none" autosize [routerLink]="['login']" *ngIf="!auth.getUserConnected()">Sign In</button>
-    <button mat-raised-button color="none" autosize [routerLink]="['registro']" *ngIf="!auth.getUserConnected()">Sign up</button>
+  </div>
+  <div id="btnsDerecha">
+    <button mat-raised-button color="none" autosize [routerLink]="['login']" *ngIf="!auth.getUserConnected()">Sign
+      In</button>
+    <button mat-raised-button color="none" autosize [routerLink]="['registro']" *ngIf="!auth.getUserConnected()">Sign
+      up</button>
     <span *ngIf="userConect" id="nombre">{{userConect.nombre}}</span>
-    <mat-icon mat-raised-button color="none" autosize *ngIf="auth.getUserConnected()" [routerLink]="['carrito']">shopping_cart</mat-icon> 
-    <mat-icon mat-raised-button color="none" autosize *ngIf="auth.getUserConnected()" (click)="logout()">logout</mat-icon> 
+    <mat-icon mat-raised-button color="none" autosize *ngIf="auth.getUserConnected()" [routerLink]="['carrito']"
+      class="carritoIcon">shopping_cart</mat-icon>
+    <mat-icon mat-raised-button color="none" autosize *ngIf="auth.getUserConnected()" (click)="logout()">logout
+    </mat-icon>
+  </div>
 </mat-toolbar>
 
 
 <!-- Contenido de la web -->
 <mat-drawer-container class="example-container" autosize>
-    <mat-drawer #drawer class="example-sidenav" mode="side">
-        <div class="elementoBarra" [routerLink]="['libro/expositor']">Inicio</div>
-        <div class="elementoBarra" [routerLink]="['libro/creacionLibro']"> Productos Químicos</div>
-        <div class="elementoBarra" [routerLink]="['autor/expositorAutor']"> Celulosas y Textiles</div>
-        <div class="elementoBarra" [routerLink]="['autor/creacionAutor']"> Complementos de Higuiene</div>
-        <div class="elementoBarra" [routerLink]="['autor/creacionAutor']"> Maquina de Limpieza</div>
-    </mat-drawer>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <div class="elementoBarra" [routerLink]="['libro/expositor']">Inicio</div>
+    <div class="elementoBarra" [routerLink]="['libro/creacionLibro']"> Productos Químicos</div>
+    <div class="elementoBarra" [routerLink]="['autor/expositorAutor']"> Celulosas y Textiles</div>
+    <div class="elementoBarra" [routerLink]="['autor/creacionAutor']"> Complementos de Higuiene</div>
+    <div class="elementoBarra" [routerLink]="['autor/creacionAutor']"> Maquina de Limpieza</div>
+  </mat-drawer>
 
-    <div class="example-sidenav-content">
-        <!-- Resultado del enrutamiento -->
-        <router-outlet></router-outlet>
-    </div>
+  <div class="example-sidenav-content">
+    <!-- Resultado del enrutamiento -->
+    <router-outlet></router-outlet>
+  </div>
 
 </mat-drawer-container>

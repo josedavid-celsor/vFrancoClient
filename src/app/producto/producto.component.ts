@@ -20,13 +20,10 @@ export class ProductoComponent {
   modeloTipo: string[]  = ["id", "codigo","nombre", "cantidad", "precio", "tipoProducto.nombre"]
   paginationAsync: GTPeticionPaginacion = new GTPeticionPaginacion(this.productoService.getProductoPlist)
   totalProductos: number = 0
-  FormSearch: FormGroup; 
+  FormSearch: FormGroup;
   lastpage: PageEvent;
   lastsearch: string;
   listTipo: Array<TipoProducto>
-  //Para que el formulario al aceptar ejecute el solo la función del servicio
- // peticionUpdate: GF_APIRequest = new GF_APIRequest(this.productoService.edit.bind(this.productoService), ['OBJECT'])
- // peticionCreate: GF_APIRequest = new GF_APIRequest(this.productoService.create.bind(this.productoService), ['OBJECT'])
   /**
    * Es un formulario que muestra los campos de tipo producto y dependiendo de su tipo permitira hacer el crud
    */
@@ -41,9 +38,9 @@ export class ProductoComponent {
     private formService: GFFormService,
     private tipoProductoService: TipoProductoService ){
     }
-    
+
     ngAfterViewInit(){
-      
+
     }
     ngOnInit(){
       this.configForm();
@@ -53,8 +50,6 @@ export class ProductoComponent {
         this.formTipo.getElement("tipoProducto").list = this.listTipo
       })
       this.getProductoPlist();
-     // this.formTipo.APIRequest.edition = this.peticionUpdate
-    //  this.formTipo.APIRequest.creation = this.peticionCreate
       this.FormSearch = new FormGroup({
         search: new FormControl(null),
       });
@@ -62,9 +57,9 @@ export class ProductoComponent {
         this.lastsearch = valor
         this.paginator.firstPage()
         if(this.paginator.pageIndex === 0){
-          this.getProductoPaginado() 
+          this.getProductoPaginado()
         }
-        
+
       })
     }
 
@@ -72,11 +67,11 @@ export class ProductoComponent {
     this.formTipo.changeTypeForm(producto, GF_TypeForm.INSPECTION, "View  Producto")
     //Por definición un observable necesita que alguien se suscriba para ejecutarse y hay veces que no necesitas hacer anda con la respuesta
     this.formService.openForm(this.formTipo).subscribe();
-
   }
+
   /**
-   * 
-   * @param producto 
+   *
+   * @param producto
    */
   edit(producto: Producto){
     this.formTipo.changeTypeForm(producto, GF_TypeForm.EDITION, "Editar Tipo Producto")
@@ -99,7 +94,7 @@ export class ProductoComponent {
 
   create(){
     this.formTipo.changeTypeForm(null, GF_TypeForm.CREATION, "Crear Producto")
-    this.formTipo.disableControls(['id']) 
+    this.formTipo.disableControls(['id'])
     this.formService.openForm(this.formTipo).subscribe(productoUpdate=>{
       if(productoUpdate){
         this.productoService.create(productoUpdate,this.formTipo.images).subscribe(()=>{

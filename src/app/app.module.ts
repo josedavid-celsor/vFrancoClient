@@ -33,10 +33,13 @@ import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { CarritoComponent } from './carrito/carrito.component';
 import { CartaProductoComponent } from './carta-producto/carta-producto.component';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
+
 
 
 @NgModule({
-  declarations: [		
+  declarations: [
     AppComponent,
     LoginComponent,
     RegistrosComponent,
@@ -46,7 +49,7 @@ import { CartaProductoComponent } from './carta-producto/carta-producto.componen
     ProductoComponent,
     ShopComponent,
     CarritoComponent,
-    CartaProductoComponent
+    CartaProductoComponent,
    ],
   imports: [
     BrowserModule,
@@ -68,12 +71,14 @@ import { CartaProductoComponent } from './carta-producto/carta-producto.componen
     GTFormModule,
     GFGenericFormComponent,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    MatDividerModule,
+    MatListModule
   ],
   providers: [
     AuthGuard,
     AuthService,
-    TipoProductoService, 
+    TipoProductoService,
     AuthedGuard,
     GTFormService,
     AdminGuard,
