@@ -6,10 +6,10 @@
     </button>
     <span> <a [routerLink]="['inicio']" id="logo">{{title}}</a></span>
     <div class="opcionesMenu">
-      <button mat-flat-button color="none" autosize [routerLink]="['shop/59']">Productos Químicos</button>
-      <button mat-flat-button color="none" autosize [routerLink]="['shop/61']">Celusos y textiles</button>
-      <button mat-flat-button color="none" autosize [routerLink]="['shop/62']">Complementos de Higuiene</button>
-      <button mat-flat-button color="none" autosize [routerLink]="['shop/68']">Maquina de Limpieza</button>
+      <button mat-flat-button color="none" autosize [routerLink]="['shop/95']">Productos Químicos</button>
+      <button mat-flat-button color="none" autosize [routerLink]="['shop/96']">Celusos y textiles</button>
+      <button mat-flat-button color="none" autosize [routerLink]="['shop/99']">Complementos de Higuiene</button>
+      <button mat-flat-button color="none" autosize [routerLink]="['shop/100']">Maquina de Limpieza</button>
 
       <!-- ng container es como un div que no se renderiza luego, util para meter condiciones y bucles sin partir la extructura del html -->
       <ng-container *ngIf="auth.isAdmin()">
@@ -35,12 +35,11 @@
 
 <!-- Contenido de la web -->
 <mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <div class="elementoBarra" [routerLink]="['libro/expositor']">Inicio</div>
-    <div class="elementoBarra" [routerLink]="['libro/creacionLibro']"> Productos Químicos</div>
-    <div class="elementoBarra" [routerLink]="['autor/expositorAutor']"> Celulosas y Textiles</div>
-    <div class="elementoBarra" [routerLink]="['autor/creacionAutor']"> Complementos de Higuiene</div>
-    <div class="elementoBarra" [routerLink]="['autor/creacionAutor']"> Maquina de Limpieza</div>
+  <mat-drawer #drawer class="example-sidenav" mode="over">
+    <div class="elementoBarra" [routerLink]="['shop/59']"> Productos Químicos</div>
+    <div class="elementoBarra" [routerLink]="['shop/61']"> Celulosas y Textiles</div>
+    <div class="elementoBarra" [routerLink]="['shop/62']"> Complementos de Higuiene</div>
+    <div class="elementoBarra" [routerLink]="['shop/68']"> Maquina de Limpieza</div>
   </mat-drawer>
 
   <div class="example-sidenav-content">

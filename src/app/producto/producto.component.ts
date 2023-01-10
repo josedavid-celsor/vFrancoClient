@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Producto } from '../interfaces/Producto';
 import { MatDialog } from '@angular/material/dialog';
-import {  GTPeticionPaginacion, GTTableComponent, GT_TF } from 'ngx-generic-tools';
+import { GTTableComponent } from '@aramirezj/ngx-generic-tables';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ProductoService } from '../services/Producto.service';
@@ -18,7 +18,6 @@ export class ProductoComponent {
   listadoProducto: Producto[]
   columnasTipo: string[] = ["ID", "CODIGO", "NOMBRE", "CANTIDAD", "PRECIO", "TIPO PRODUCTO"]
   modeloTipo: string[]  = ["id", "codigo","nombre", "cantidad", "precio", "tipoProducto.nombre"]
-  paginationAsync: GTPeticionPaginacion = new GTPeticionPaginacion(this.productoService.getProductoPlist)
   totalProductos: number = 0
   FormSearch: FormGroup;
   lastpage: PageEvent;
@@ -110,21 +109,21 @@ export class ProductoComponent {
       this.listadoProducto = productos.content
       this.totalProductos = productos.totalElements
       if(this.tablaTipos){
-        this.tablaTipos.refrescaTabla(this.listadoProducto)
+        this.tablaTipos.refreshData(this.listadoProducto)
       }
     })
   }
 
-  notification(event: {accion:string, elemento:Producto}){
-    switch(event.accion){
-      case 'editar':
-        this.edit(event.elemento)
+  notification(event: {action:string, entity:Producto}){
+    switch(event.action){
+      case 'edit':
+        this.edit(event.entity)
       break;
-      case 'eliminarT':
-        this.delete(event.elemento)
+      case 'autoDelete':
+        this.delete(event.entity)
       break;
-      case 'ver':
-        this.getOne(event.elemento)
+      case 'inspect':
+        this.getOne(event.entity)
         break;
     }
   }
@@ -136,7 +135,7 @@ export class ProductoComponent {
 
   getProductoPaginado(){
     this.productoService.getProductoPlist(this.lastpage?.pageIndex, this.lastpage?.pageSize, this.lastsearch).subscribe(tipoProducto =>{
-      this.tablaTipos.refrescaTabla(tipoProducto.content)
+      this.tablaTipos.refreshData(tipoProducto.content)
       this.totalProductos = tipoProducto.totalElements
     })
   }

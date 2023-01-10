@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { TipoProducto } from '../interfaces/TipoProducto';
 import { TipoProductoService } from '../services/TipoProducto.service';
 import { MatDialog } from '@angular/material/dialog';
-import { GTForm, GTFormService, GTPeticionExpansion, GTPeticionPaginacion, GTTableComponent, GT_TF } from 'ngx-generic-tools';
+import { GTTableComponent} from '@aramirezj/ngx-generic-tables';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Sort } from '@angular/material/sort';
@@ -20,7 +20,7 @@ export class TipoProductoComponent implements OnInit {
   listadoTipoProducto: TipoProducto[]
   columnasTipo: string[] = ["ID", "Nombre"]
   modeloTipo: string[]  = ["id", "nombre"]
-  paginationAsync: GTPeticionPaginacion = new GTPeticionPaginacion(this.tipoProductoService.getTipoProductoPlist)
+ 
   totalTipoProductos: number = 0
   FormSearch: FormGroup; 
   lastpage: PageEvent;
@@ -83,11 +83,13 @@ export class TipoProductoComponent implements OnInit {
   }
 
   delete(tipoProducto: TipoProducto){
-    this.tipoProductoService.delete(tipoProducto.id).subscribe(()=>{
+    this.tipoProductoService.delete(tipoProducto.id).subscribe({
+      next:(respuesta)=>{
       console.log("borrado")
       this.getTipoProductoPlist();
-    })
-  }
+    }
+  });
+}
 
   create(){
     this.formTipo.changeTypeForm(null, GF_TypeForm.CREATION, "Crear Tipo Producto")
@@ -105,21 +107,21 @@ export class TipoProductoComponent implements OnInit {
       this.listadoTipoProducto = productos.content
       this.totalTipoProductos = productos.totalElements
       if(this.tablaTipos){
-        this.tablaTipos.refrescaTabla(this.listadoTipoProducto)
+        this.tablaTipos.refreshData(this.listadoTipoProducto)
       }
     })
   }
 
-  notification(event: {accion:string, elemento:TipoProducto}){
-    switch(event.accion){
-      case 'editar':
-        this.edit(event.elemento)
+  notification(event: {action:string, entity:TipoProducto}){
+    switch(event.action){
+      case 'edit':
+        this.edit(event.entity)
       break;
-      case 'eliminarT':
-        this.delete(event.elemento)
+      case 'delete':
+        this.delete(event.entity)
       break;
-      case 'ver':
-        this.getOne(event.elemento)
+      case 'inspect':
+        this.getOne(event.entity)
         break;
     }
   }
@@ -131,7 +133,7 @@ export class TipoProductoComponent implements OnInit {
 
   getTiposPaginado(){
     this.tipoProductoService.getTipoProductoPlist(this.lastpage?.pageIndex, this.lastpage?.pageSize, this.lastsearch).subscribe(tipoProducto =>{
-      this.tablaTipos.refrescaTabla(tipoProducto.content)
+      this.tablaTipos.refreshData(tipoProducto.content)
       this.totalTipoProductos = tipoProducto.totalElements
     })
   }

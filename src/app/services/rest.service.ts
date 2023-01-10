@@ -49,7 +49,7 @@ export class RestService {
    * @param valores Valores de la petición
    * @returns Observable con el resultado de la petición
    */
-  peticionHttp(url: string, tipo: string, valores?: any, valoresPaginacion?:string): Observable<any> {
+  peticionHttp(url: string, tipo: string, valores?: any, valoresPaginacion?: string): Observable<any> {
 
     this.isWaiting.emit(true);
     this.solicitudes++;
@@ -60,7 +60,7 @@ export class RestService {
         peticion = this.http.get(this.apiUrl + url, { observe: 'body', headers: this.headers });
         break;
       case 'getPaginado':
-        peticion = this.http.get(this.apiUrl + url + valoresPaginacion, { observe: 'body', headers: this.headers});
+        peticion = this.http.get(this.apiUrl + url + valoresPaginacion, { observe: 'body', headers: this.headers });
         break;
       case 'post':
         peticion = this.http.post(this.apiUrl + url, valores, { observe: 'body', headers: this.headers });
@@ -101,4 +101,4 @@ export class RestService {
       })
     })
   }
-  }
+}

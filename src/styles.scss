@@ -2,3 +2,12 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.notierror {
+    z-index: 10000 !important;
+    white-space: pre-wrap;
+    background-color: darkred;
+    color: white;
+    .mat-button-wrapper {
+        color: white;
+    }
+}

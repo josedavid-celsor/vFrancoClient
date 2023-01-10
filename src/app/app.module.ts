@@ -22,7 +22,7 @@ import { TipoProductoComponent } from './tipoProducto/tipoProducto.component';
 import {MatDialogModule} from '@angular/material/dialog'
 import { AuthedGuard } from './guards/authed.guard';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import { GTFormModule, GTFormService, GTTableModule } from 'ngx-generic-tools';
+import {GTTableComponent} from '@aramirezj/ngx-generic-tables';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AdminGuard } from './guards/admin.guard';
 import { ProductoComponent } from './producto/producto.component';
@@ -35,6 +35,7 @@ import { CarritoComponent } from './carrito/carrito.component';
 import { CartaProductoComponent } from './carta-producto/carta-producto.component';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
+import { FacturaComponent } from './factura/factura.component';
 
 
 
@@ -50,6 +51,7 @@ import {MatListModule} from '@angular/material/list';
     ShopComponent,
     CarritoComponent,
     CartaProductoComponent,
+    FacturaComponent,
    ],
   imports: [
     BrowserModule,
@@ -66,9 +68,8 @@ import {MatListModule} from '@angular/material/list';
     HttpClientModule,
     MatDialogModule,
     MatPaginatorModule,
-    GTTableModule,
+    GTTableComponent,
     MatSnackBarModule,
-    GTFormModule,
     GFGenericFormComponent,
     MatCardModule,
     MatGridListModule,
@@ -80,7 +81,6 @@ import {MatListModule} from '@angular/material/list';
     AuthService,
     TipoProductoService,
     AuthedGuard,
-    GTFormService,
     AdminGuard,
     GFFormService
   ],
