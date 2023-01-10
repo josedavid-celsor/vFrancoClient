@@ -13,11 +13,11 @@ export class CarritoService {
 
 constructor(private restservice: RestService, private matsnackbar: MatSnackBar) { }
 
-getCarrito(): Observable<Carrito> {
-  return new Observable<Carrito>(observe => {
+getCarrito(): Observable<Carrito[]> {
+  return new Observable<Carrito[]>(observe => {
       this.restservice.peticionHttp(this.carritotoApi + "", "get"
       ).subscribe(respuestaapi => {
-        /* console.log(respuestaapi) */
+        console.log(respuestaapi) 
         observe.next(respuestaapi)
         observe.complete()
       })

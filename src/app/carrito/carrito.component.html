@@ -2,8 +2,12 @@
 <button mat-raised-button color="warn" (click)="vaciarCarrito()"> Vaciar todo</button>
 
 <mat-list>
-  <mat-list-item *ngFor="let carrito of carritoFilter">
-    {{carrito.producto.nombre}}
-  </mat-list-item>
-  <mat-divider></mat-divider>
+  <ng-container *ngFor="let carrito of carritoFilter">
+    <img [src]="'http://localhost:8082/Producto/files/'+carrito.producto.fotos[0]">
+    <mat-list-item >
+    <div matListItemTitle>{{carrito.producto.nombre}}</div>
+    <div matListItemLine>{{carrito.producto.precio}}€</div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </ng-container>
 </mat-list>

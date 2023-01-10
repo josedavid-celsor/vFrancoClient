@@ -45,6 +45,7 @@
   display: none;
 }
 
+
 @media only screen and (max-width: 850px){
   #hamburguesa{
     display: block !important;
@@ -52,4 +53,10 @@
   .opcionesMenu{
     display: none;
   }
+  .elementoBarra{
+    border-bottom: 2px solid black;
+    padding: 12px 24px;
+    margin-bottom: 2vh;
+    cursor: pointer;
+}
 }

@@ -13,7 +13,6 @@ export class CarritoComponent {
   activatedRouted: ActivatedRoute = inject(ActivatedRoute)
   carritoService: CarritoService = inject(CarritoService);
   carritoFilter: Array<Carrito>;
-  resp: any;
 
   ngOnInit() {
     this.getCarrito()
@@ -30,17 +29,13 @@ export class CarritoComponent {
 
   getCarrito() {
     /** Recogemos al menos 50 productos del tipo de producto elegido */
-    this.carritoService.getCarrito().subscribe({
-      next: (resp: any) => {
-        //console.log(resp);
-        this.carritoFilter = resp;
-        console.log(this.carritoFilter);
-      }
-  });
-    /* this.carritoService.getCarrito().subscribe(filteredData => {
-      console.log(filteredData)
-      this.carritoFilter = filteredData;
-      console.log(this.carritoFilter)
-    }) */
+    this.carritoService.getCarrito().subscribe(resp =>{
+      //Recorremos cada carrito, sacamos el producto y decimos que el array de fotos sera el split de la cadena de imagenes por el -
+      resp.forEach(carrito =>{
+        carrito.producto.fotos = carrito.producto.images.split("-")
+      })
+      this.carritoFilter = resp;
+      console.log(this.carritoFilter);
+    })
   }
 }
