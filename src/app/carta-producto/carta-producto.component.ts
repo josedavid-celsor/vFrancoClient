@@ -7,6 +7,7 @@ import { Producto } from '../interfaces/Producto';
   styleUrls: ['./carta-producto.component.scss']
 })
 export class CartaProductoComponent {
+  //Relación padre hijo permite redirigir información entre ellos
   @Input() producto: Producto
 
   //Para mandar información a su componente padre mediante un evento

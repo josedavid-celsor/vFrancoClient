@@ -36,6 +36,7 @@ import { CartaProductoComponent } from './carta-producto/carta-producto.componen
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import { FacturaComponent } from './factura/factura.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 
@@ -74,7 +75,8 @@ import { FacturaComponent } from './factura/factura.component';
     MatCardModule,
     MatGridListModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    MatMenuModule
   ],
   providers: [
     AuthGuard,

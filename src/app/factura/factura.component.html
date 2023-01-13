@@ -1,5 +1,5 @@
 <h1>Factura Lista</h1>
-<div>
+<div id="tablagenerica">
     <gt-table [data]="listadoFactura" [model]="modeloTipo" [visual]="columnasTipo" *ngIf="listadoFactura"
       [search]="false" [catalogActions]="['delete', 'inspect']" (notify)="notification($event)" [paginator]="false">
 

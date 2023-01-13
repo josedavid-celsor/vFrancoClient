@@ -24,7 +24,11 @@
       In</button>
     <button mat-raised-button color="none" autosize [routerLink]="['registro']" *ngIf="!auth.getUserConnected()">Sign
       up</button>
-    <span *ngIf="userConect" id="nombre">{{userConect.nombre}}</span>
+    <button mat-button [matMenuTriggerFor]="menu" *ngIf="userConect" id="nombre">{{userConect.nombre}}</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item autosize [routerLink]="['factura']">Factura</button>
+      <button mat-menu-item autosize [routerLink]="['']">Compra</button>
+    </mat-menu>
     <mat-icon mat-raised-button color="none" autosize *ngIf="auth.getUserConnected()" [routerLink]="['carrito']"
       class="carritoIcon">shopping_cart</mat-icon>
     <mat-icon mat-raised-button color="none" autosize *ngIf="auth.getUserConnected()" (click)="logout()">logout
