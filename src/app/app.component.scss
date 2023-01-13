@@ -1,63 +1,63 @@
 #toolbar {
   display: flex;
   justify-content: space-between;
-}
+  }
 
-.example-spacer {
-    flex: 1 1 auto;
-}
+  .example-spacer {
+  flex: 1 1 auto;
+  }
 
-.opcionesMenu{
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-}
+  .opcionesMenu {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  }
 
-#nombre{
-    margin-right: 3vw;
-    font-size: 1.25rem;
-}
+  #nombre {
+  margin-right: 3vw;
+  }
 
-#logo{
-    text-decoration: none;
-    color: white;
-}
+  #logo {
+  text-decoration: none;
+  color: white;
+  }
 
-.carritoIcon{
+  .carritoIcon {
   margin-right: 5%;
-}
+  }
 
-.mat-icon{
-    cursor: pointer;
-}
+  .mat-icon {
+  cursor: pointer;
+  }
 
-#btnsIzquierda {
+  #btnsIzquierda {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-}
+  }
 
-#btnsDerecha {
+  #btnsDerecha {
   display: flex;
   justify-content: space-evenly;
-}
+  }
 
-#hamburguesa{
+  #hamburguesa {
   display: none;
-}
-
-
-@media only screen and (max-width: 1500px){
-  #hamburguesa{
-    display: block !important;
   }
-  .opcionesMenu{
-    display: none;
+
+  @media only screen and (max-width: 1500px) {
+  #hamburguesa {
+  display: block !important;
   }
-  .elementoBarra{
-    border-bottom: 2px solid black;
-    padding: 12px 24px;
-    margin-bottom: 2vh;
-    cursor: pointer;
-}
-}
+
+  .opcionesMenu {
+  display: none;
+  }
+
+  .elementoBarra {
+  border-bottom: 2px solid black;
+  padding: 12px 24px;
+  margin-bottom: 2vh;
+  cursor: pointer;
+  }
+  }

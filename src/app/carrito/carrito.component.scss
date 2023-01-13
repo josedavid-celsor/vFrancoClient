@@ -1,0 +1,52 @@
+#container {
+  margin: 0 auto;
+  width: 90%;
+}
+
+#botones {
+  margin: 2% 2% 0 2%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#lista {
+  display: flex !important;
+}
+
+#nombre {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+#texto {
+  max-width: 20vw;
+  margin-left: 20%;
+}
+
+img {
+  max-width: 15vw;
+  width: 25vw;
+  height: auto;
+}
+
+.mat-grid-tile {
+  border-bottom: solid 1px lightgray;
+}
+
+@media only screen and (min-width: 2500px) {
+  img {
+    max-width: 10vw;
+  }
+}
+
+@media only screen and (max-width: 1450px) {
+  img {
+    max-width: 15vw;
+  }
+}
+
+@media only screen and (max-width: 920px) {
+  img {
+    max-width: 30vw;
+  }
+}

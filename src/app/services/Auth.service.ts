@@ -63,8 +63,6 @@ export class AuthService {
     this.routed.navigate(['inicio'])
   }
 
-
-
   isAdminRequest(): Observable<boolean> {
     return new Observable<boolean>(observe => {
       const token: string =localStorage.getItem('token')
@@ -94,6 +92,7 @@ export class AuthService {
       return true;
     }
   }
+
   getUser() {
     return JSON.parse(localStorage.getItem('user'));
   }

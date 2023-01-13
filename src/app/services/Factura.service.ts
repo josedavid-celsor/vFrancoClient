@@ -15,18 +15,18 @@ export class FacturaService {
   constructor(private restservice: RestService, private oHttp: HttpClient, private matsnack: MatSnackBar) { }
 
 getFacturaPlist(page?: number, size?: number, termino?: string, id_usertype?: number, strSortField?: string, strOrderDirection?: string): Observable<Page<Factura>> {
- 
+
   let pagination = "?";
   if(page) pagination += `page=${page}&`
   if(size) pagination += `size=${size}&`
   if(termino) pagination += `filter=${termino}&`
- 
+
   return new Observable(observer => {
     this.restservice.peticionHttp(this.facturaApi,'getPaginado',null,pagination).subscribe(respuesta => {
       observer.next(respuesta)
       observer.complete()
     })
-   
+
   })
 }
 

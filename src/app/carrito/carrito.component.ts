@@ -24,7 +24,8 @@ export class CarritoComponent {
   }
 
   vaciarCarrito() {
-    this.carritoService.vaciarCarrito().subscribe()
+    this.carritoService.vaciarCarrito().subscribe();
+    this.getCarrito();
   }
 
   getCarrito() {

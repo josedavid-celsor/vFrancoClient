@@ -1,13 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
 .notierror {
-    z-index: 10000 !important;
-    white-space: pre-wrap;
-    background-color: darkred;
+  z-index: 10000 !important;
+  white-space: pre-wrap;
+  background-color: darkred;
+  color: white;
+
+  .mat-button-wrapper {
     color: white;
-    .mat-button-wrapper {
-        color: white;
-    }
+  }
+}
+
+.mat-drawer-container {
+  background-color: white !important;
+}
+
+.carrito .mat-grid-tile-content{
+  justify-content: flex-start;
 }
