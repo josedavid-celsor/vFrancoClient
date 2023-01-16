@@ -14,28 +14,13 @@ export class ProductoService {
   constructor(private restservice: RestService, private oHttp: HttpClient) { }
 
   /* http://localhost:8082/producto?page=1&size=5&direction=Sort.Direction.DESC */
-  getProductoPlist(page?: number, size?: number, termino?: string, id_usertype?: number, strSortField?: string, strOrderDirection?: string, id_tipoProducto?: number): Observable<Page<Producto>> {
+  getProductoPlist(page?: number, size?: number, termino?: string, id_usertype?: number, strSortField?: string, strOrderDirection?: string, codigo?: string): Observable<Page<Producto>> {
 
     let pagination = "?";
     if (page) pagination += `page=${page}&`
     if (size) pagination += `size=${size}&`
     if (termino) pagination += `filter=${termino}&`
-    if (id_tipoProducto) pagination += `tipoproducto=${id_tipoProducto}&`
-
-
-    /*   if (id_usertype) {
-        params = params.set("usertype", id_usertype);
-        console.log("por que no funcionas?")
-      }
-      if (strSortField) { //&sort=codigo,[asc|desc]
-        if (strOrderDirection != "") {
-          params = params.set("sort", strSortField + "," + strOrderDirection);
-          console.log("por que no funcionas?")
-        } else {
-          params = params.set("sort", strSortField);
-          console.log("por que no funcionas?")
-        }
-      } */
+    if (codigo) pagination += `tipoproducto=${codigo}&`
 
     return new Observable(observer => {
       this.restservice.peticionHttp(this.productoApi + "/filtros", 'getPaginado', null, pagination).subscribe(respuesta => {
@@ -98,7 +83,6 @@ export class ProductoService {
   generate() {
     return new Observable<Producto>(observe => {
       this.restservice.peticionHttp(this.productoApi + "/generate", "post").subscribe(respuestaapi => {
-
         observe.next(respuestaapi)
         observe.complete()
       })

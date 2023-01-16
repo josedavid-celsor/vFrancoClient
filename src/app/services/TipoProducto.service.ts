@@ -18,22 +18,6 @@ getTipoProductoPlist(page?: number, size?: number, termino?: string, id_usertype
   if(page) pagination += `page=${page}&`
   if(size) pagination += `size=${size}&`
   if(termino) pagination += `filter=${termino}&`
-  
-   
-/*   if (id_usertype) {
-    params = params.set("usertype", id_usertype);
-    console.log("por que no funcionas?")
-  }
-  if (strSortField) { //&sort=codigo,[asc|desc]
-    if (strOrderDirection != "") {
-      params = params.set("sort", strSortField + "," + strOrderDirection);
-      console.log("por que no funcionas?")
-    } else {
-      params = params.set("sort", strSortField);
-      console.log("por que no funcionas?")
-    }
-  } */
- 
   return new Observable(observer => {
     this.restservice.peticionHttp(this.tipoProductoapi,'getPaginado',null,pagination).subscribe(respuesta => {
       observer.next(respuesta)
@@ -87,6 +71,16 @@ delete(id: number ):Observable<boolean>{
 generate(){
   return new Observable<TipoProducto>(observe=>{
     this.restservice.peticionHttp(this.tipoProductoapi + "/generate", "post").subscribe(respuestaapi=>{
+      
+      observe.next(respuestaapi)
+      observe.complete()
+    })
+  })
+}
+
+getAll(): Observable<TipoProducto[]>{
+  return new Observable<TipoProducto[]>(observe=>{
+    this.restservice.peticionHttp(this.tipoProductoapi + "/getAll", "get").subscribe(respuestaapi=>{
       
       observe.next(respuestaapi)
       observe.complete()

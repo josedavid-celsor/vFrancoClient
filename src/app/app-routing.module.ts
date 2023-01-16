@@ -19,9 +19,9 @@ const routes: Routes = [
   {path: "inicio", component: InicioComponent, title: "Inicio"},
   {path: "tipoProducto", component: TipoProductoComponent, title: "Tipos De Productos", canActivate:[AdminGuard]},
   {path: "producto", component: ProductoComponent, title: "Productos", canActivate:[AdminGuard]},
-  {path: "shop/:idTipo", component: ShopComponent, title: "Tienda"},
+  {path: "shop/:codigo", component: ShopComponent, title: "Tienda"},
   {path: "carrito", component: CarritoComponent, title: "Carrito"},
-  {path: "factura", component: FacturaComponent, title: "Factura"}
+  {path: "factura", component: FacturaComponent, title: "Factura"},
 ];
 
 @NgModule({

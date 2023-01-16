@@ -1,3 +1,4 @@
+import { SubTipoProducto } from "./SubTipoProducto";
 import { TipoProducto } from "./TipoProducto";
 
 export interface Producto {
@@ -6,7 +7,7 @@ export interface Producto {
     nombre: string;
     cantidad: number;
     precio: number;
-    tipoProducto: TipoProducto;
-    images:string;
+    subTipoProducto: SubTipoProducto
     fotos:string[];
+    images: string;
 }

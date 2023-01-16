@@ -22,7 +22,7 @@ import { TipoProductoComponent } from './tipoProducto/tipoProducto.component';
 import {MatDialogModule} from '@angular/material/dialog'
 import { AuthedGuard } from './guards/authed.guard';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import {GTTableComponent} from '@aramirezj/ngx-generic-tables';
+import {GTInfiniteTableComponent, GTTableComponent} from '@aramirezj/ngx-generic-tables';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AdminGuard } from './guards/admin.guard';
 import { ProductoComponent } from './producto/producto.component';
@@ -37,6 +37,9 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import { FacturaComponent } from './factura/factura.component';
 import {MatMenuModule} from '@angular/material/menu';
+import { SubTipoProductoService } from './services/SubTipoProduto.service';
+import { CompraService } from './services/Compra.service';
+
 
 
 
@@ -52,7 +55,7 @@ import {MatMenuModule} from '@angular/material/menu';
     ShopComponent,
     CarritoComponent,
     CartaProductoComponent,
-    FacturaComponent,
+    FacturaComponent
    ],
   imports: [
     BrowserModule,
@@ -76,7 +79,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatGridListModule,
     MatDividerModule,
     MatListModule,
-    MatMenuModule
+    MatMenuModule,
+    GTInfiniteTableComponent
   ],
   providers: [
     AuthGuard,
@@ -84,7 +88,9 @@ import {MatMenuModule} from '@angular/material/menu';
     TipoProductoService,
     AuthedGuard,
     AdminGuard,
-    GFFormService
+    GFFormService,
+    SubTipoProductoService,
+    CompraService
   ],
   bootstrap: [AppComponent]
 })

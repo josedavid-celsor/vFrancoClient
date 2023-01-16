@@ -20,13 +20,13 @@ export class ShopComponent {
     /** Recogemos desde la url el id del tipo de producto   */
     this.activatedRouted.params.subscribe(params=>{
       console.log(params)
-      this.getProductByType(params.idTipo)
+      this.getProductByType(params.codigoTipo)
     })
   }
 
-  getProductByType(idTipo: number){
+  getProductByType(codigo: string){
     /** Recogemos al menos 50 productos del tipo de producto elegido */
-    this.productoService.getProductoPlist(0,50,null,null,null,null,idTipo).subscribe(filteredData=>{
+    this.productoService.getProductoPlist(0,50,null,null,null,null,codigo).subscribe(filteredData=>{
 
 
       this.productosFilter = filteredData.content

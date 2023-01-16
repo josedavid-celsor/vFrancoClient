@@ -1,4 +1,4 @@
-<h1>Tipo Productos Lista</h1>
+<h1>Tipo/Sub-Tipos Productos Lista</h1>
 <div>
 
   <div id="tablagenerica">
@@ -8,14 +8,15 @@
         <input matInput formControlName="search">
       </mat-form-field>
       <div id="botones">
-        <button mat-raised-button color="accent" (click)="create()" id="create">Create</button>
+        <button mat-raised-button color="accent" (click)="create(true)" id="create">Create</button>
         <button mat-raised-button color="accent" (click)="generate()" id="create">Generate</button>
       </div>
     </form>
-    <gt-table [data]="listadoTipoProducto" [model]="modeloTipo" [visual]="columnasTipo" *ngIf="listadoTipoProducto"
-      [search]="false" [catalogActions]="['edit', 'delete', 'inspect']" (notify)="notification($event)" [paginator]="false">
+    <gt-infinite-table [data]="listadoTipoProducto" [models]="[modeloTipo, modeloTipo]" [visuals]="[columnasTipo, columnasTipo]" *ngIf="listadoTipoProducto"
+      [search]="false" [actionLevels]="accionesTabla" (notify)="notification($event)"
+       [paginator]="false" [levels]="['subtipo']" [infiniteRequests]="[peticionSubTipos]" [levelTitles]="['Lista de Subtipos']">
 
-    </gt-table>
+    </gt-infinite-table>
     <mat-paginator [length]="totalTipoProductos" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]"
       aria-label="Select page" (page)="pagina($event)">
     </mat-paginator>

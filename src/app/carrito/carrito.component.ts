@@ -24,8 +24,10 @@ export class CarritoComponent {
   }
 
   vaciarCarrito() {
-    this.carritoService.vaciarCarrito().subscribe();
-    this.getCarrito();
+    this.carritoService.vaciarCarrito().subscribe(()=>{
+      this.carritoFilter = []
+    });
+    
   }
 
   getCarrito() {
