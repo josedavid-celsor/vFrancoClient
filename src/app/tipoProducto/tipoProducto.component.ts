@@ -11,7 +11,7 @@ import { SubTipoProductoService } from '../services/SubTipoProduto.service';
 import { SubTipoProducto } from '../interfaces/SubTipoProducto';
 
 /**
- * 
+ *
  */
 @Component({
   selector: 'app-tipoProducto',
@@ -77,8 +77,8 @@ export class TipoProductoComponent implements OnInit {
     this.formService.openForm(this.formTipo).subscribe();
   }
   /**
-   * 
-   * @param tipoProducto 
+   *
+   * @param tipoProducto
    */
   edit(tipoProducto: TipoProducto | SubTipoProducto) {
     this.formTipo.changeTypeForm(tipoProducto, GF_TypeForm.EDITION, "Edit Element")
@@ -95,7 +95,7 @@ export class TipoProductoComponent implements OnInit {
       this.peticionCreate.request = this.tipoProductoService.create.bind(this.tipoProductoService)
       this.peticionCreate.parametersToElement = null;
     }
-    this.formTipo.changeTypeForm(null, GF_TypeForm.CREATION, "Creat Element")
+    this.formTipo.changeTypeForm(null, GF_TypeForm.CREATION, "Create Element")
     this.formTipo.disableControls(['id'])
     this.formService.openForm(this.formTipo).subscribe(tipoUpdate => {
       if (tipoUpdate) {
@@ -180,6 +180,6 @@ export class TipoProductoComponent implements OnInit {
     console.log(this.formTipo)
    this.subTipoProductoService.generate(this.formTipo.APIRequest.creation.parametersToElement["tipoProducto"] as TipoProducto).subscribe(nuevoSubtipo=>{
     this.tablaTipos.addNewChildrenElement(this.formTipo.APIRequest.creation.parametersToElement["tipoProducto"], nuevoSubtipo)
-   }) 
+   })
   }
 }
