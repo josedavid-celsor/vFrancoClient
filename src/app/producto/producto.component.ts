@@ -48,8 +48,6 @@ export class ProductoComponent {
     this.configForm();
     //Para recuperar los tipos de productos
     this.subTipoProductoService.getSubTipoProductoPlist(0, 100).subscribe(productos => {
-      this.listSubTipo = productos.content
-      this.formTipo.getElement("subTipoProducto").list = this.listSubTipo
     })
     this.getProductoPlist();
     this.FormSearch = new FormGroup({

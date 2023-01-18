@@ -1,7 +1,18 @@
 <div id="list">
-<mat-grid-list cols="4" rowHeight="25rem" gutterSize="15px">
-  <mat-grid-tile *ngFor="let producto of productosFilter">
-    <app-carta-producto [producto]="producto" (add)="addCarrito(producto)"></app-carta-producto>
-  </mat-grid-tile>
-</mat-grid-list> 
+  <form [formGroup]="FormSearch">
+  <mat-form-field>
+    <mat-label>Search</mat-label>
+    <input matInput formControlName="search">
+  </mat-form-field>
+  <mat-radio-group  formControlName="subTipos" >
+  <mat-radio-button class="example-radio-button" *ngFor="let subtipo of listaSubtipos" [value]="subtipo.codigo" (click)="resetButton(subtipo)">
+    {{subtipo.nombre}}
+  </mat-radio-button>
+  </mat-radio-group>
+  </form>
+  <mat-grid-list cols="4" rowHeight="25rem" gutterSize="15px">
+    <mat-grid-tile *ngFor="let producto of productosFilter">
+      <app-carta-producto [producto]="producto" (add)="addCarrito(producto)"></app-carta-producto>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>

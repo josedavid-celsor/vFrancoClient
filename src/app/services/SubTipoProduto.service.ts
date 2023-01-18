@@ -88,4 +88,13 @@ export class SubTipoProductoService {
             })
         })
     }
+    
+    getSubtiposProductoByCodigo(codigo: string){
+        return new Observable<SubTipoProducto[]>(observe => {
+            this.restservice.peticionHttp(this.subTipoProductoapi + "/TipoProducto/codigo/" + codigo, "get").subscribe(respuestaapi => {
+                observe.next(respuestaapi)
+                observe.complete()
+            })
+        })
+    }
 }

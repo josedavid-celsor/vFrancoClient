@@ -39,6 +39,8 @@ import { FacturaComponent } from './factura/factura.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { SubTipoProductoService } from './services/SubTipoProduto.service';
 import { CompraService } from './services/Compra.service';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 
@@ -80,7 +82,9 @@ import { CompraService } from './services/Compra.service';
     MatDividerModule,
     MatListModule,
     MatMenuModule,
-    GTInfiniteTableComponent
+    GTInfiniteTableComponent,
+    MatCheckboxModule,
+    MatRadioModule
   ],
   providers: [
     AuthGuard,
