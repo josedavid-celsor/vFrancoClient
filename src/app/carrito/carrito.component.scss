@@ -27,26 +27,25 @@ img {
   max-width: 15vw;
   width: 25vw;
   height: auto;
+
+  @media only screen and (min-width: 2500px) {
+    max-width: 10vw;
+  }
+
+  @media only screen and (max-width: 1450px) {
+
+    max-width: 15vw;
+
+  }
+
+  @media only screen and (max-width: 920px) {
+
+    max-width: 30vw;
+
+  }
+
 }
 
 .mat-grid-tile {
   border-bottom: solid 1px lightgray;
-}
-
-@media only screen and (min-width: 2500px) {
-  img {
-    max-width: 10vw;
-  }
-}
-
-@media only screen and (max-width: 1450px) {
-  img {
-    max-width: 15vw;
-  }
-}
-
-@media only screen and (max-width: 920px) {
-  img {
-    max-width: 30vw;
-  }
 }

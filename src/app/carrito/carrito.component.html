@@ -3,20 +3,6 @@
   <button mat-raised-button color="warn" (click)="vaciarCarrito()"> Vaciar todo</button>
 </div>
 
-<!-- <mat-list>
-  <ng-container *ngFor="let carrito of carritoFilter" autosize>
-    <div id="lista">
-      <img [src]="'http://localhost:8082/Producto/files/'+carrito.producto.fotos[0]">
-      <mat-list-item [style]="{display: 'flex'}">
-        <div id="nombre" matListItemTitle>{{carrito.producto.nombre}}</div>
-        <div matListItemTitle>{{carrito.producto.tipoProducto.nombre}}</div>
-        <div matListItemLine>{{carrito.producto.precio}}€</div>
-      </mat-list-item>
-    </div>
-    <mat-divider></mat-divider>
-  </ng-container>
-</mat-list> -->
-
 <div id="container">
   <mat-grid-list cols="1" rowHeight="15rem" >
     <mat-grid-tile *ngFor="let carrito of carritoFilter" class="carrito">
@@ -25,9 +11,8 @@
         <div id="nombre">{{carrito.producto.nombre}}</div>
         <div>{{carrito.producto.subTipoProducto.nombre}}</div>
         <div>Cantidad: {{carrito.cantidad}}</div>
-        <div>{{carrito.producto.precio}}€</div>
+        <div>Precio: {{carrito.producto.precio}}€</div>
       </div>
-      <!-- <mat-divider style="width: 80%;"></mat-divider> -->
     </mat-grid-tile>
   </mat-grid-list>
 </div>

@@ -1,18 +1,20 @@
 <div id="list">
   <form [formGroup]="FormSearch">
-  <mat-form-field>
-    <mat-label>Search</mat-label>
-    <input matInput formControlName="search">
-  </mat-form-field>
-  <button mat-button [matMenuTriggerFor]="menu"  id="nombre">Filtros</button>
-<mat-menu #menu="matMenu" >
-  <mat-radio-group formControlName="subTipos" (click)="$event.stopPropagation()">
-    <mat-radio-button class="example-radio-button" *ngFor="let subtipo of listaSubtipos" [value]="subtipo.codigo"
-      (click)="resetButton(subtipo)">
-      <span (click)="$event.stopPropagation()">{{subtipo.nombre}}</span>
-    </mat-radio-button>
-  </mat-radio-group>
-</mat-menu>
+    <div id="centrado">
+      <mat-icon mat-raised-button color="none" autosize [matMenuTriggerFor]="menu" id="nombre">filter_alt</mat-icon>
+      <mat-form-field>
+        <mat-label>Search</mat-label>
+        <input matInput formControlName="search" id="">
+      </mat-form-field>
+      <mat-menu #menu="matMenu">
+        <mat-radio-group formControlName="subTipos" (click)="$event.stopPropagation()">
+          <mat-radio-button class="example-radio-button" *ngFor="let subtipo of listaSubtipos" [value]="subtipo.codigo"
+            (click)="resetButton(subtipo)">
+            <span (click)="$event.stopPropagation()">{{subtipo.nombre}}</span>
+          </mat-radio-button>
+        </mat-radio-group>
+      </mat-menu>
+    </div>
   </form>
   <mat-grid-list cols="4" rowHeight="25rem" gutterSize="15px">
     <mat-grid-tile *ngFor="let producto of productosFilter">
