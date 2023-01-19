@@ -74,10 +74,9 @@ export class ShopComponent {
     }
   } */
 
-  resetButton(subtipo: SubTipoProducto){
-    if(subtipo.id === this.FormSearch.value.subtipos?.id){
-      this.FormSearch.get("subtipos").reset()
+  resetButton(subtipo: SubTipoProducto) {
+    if (subtipo.codigo === this.FormSearch.value.subTipos) {
+      this.FormSearch.get("subTipos").reset(null)
     }
-    console.log(subtipo === this.FormSearch.value.subtipos)
   }
 }

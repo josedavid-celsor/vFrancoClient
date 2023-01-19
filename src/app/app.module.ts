@@ -41,6 +41,9 @@ import { SubTipoProductoService } from './services/SubTipoProduto.service';
 import { CompraService } from './services/Compra.service';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
+import { EstadisticasComponent } from './estadisticas/estadisticas.component';
+import { GraficoComponent } from './grafico/grafico.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 
@@ -57,7 +60,9 @@ import {MatRadioModule} from '@angular/material/radio';
     ShopComponent,
     CarritoComponent,
     CartaProductoComponent,
-    FacturaComponent
+    FacturaComponent,
+    EstadisticasComponent,
+    GraficoComponent
    ],
   imports: [
     BrowserModule,
@@ -84,7 +89,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatMenuModule,
     GTInfiniteTableComponent,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    NgxChartsModule
   ],
   providers: [
     AuthGuard,

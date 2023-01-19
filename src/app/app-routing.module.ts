@@ -11,6 +11,7 @@ import { ProductoComponent } from './producto/producto.component';
 import { ShopComponent } from './shop/shop.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { FacturaComponent } from './factura/factura.component';
+import { EstadisticasComponent } from './estadisticas/estadisticas.component';
 
 const routes: Routes = [
   {path: "", redirectTo: "/inicio", pathMatch: "full"},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: "shop/:codigo", component: ShopComponent, title: "Tienda"},
   {path: "carrito", component: CarritoComponent, title: "Carrito"},
   {path: "factura", component: FacturaComponent, title: "Factura"},
+  {path: "estadisticas", component: EstadisticasComponent, title: "Estadisticas"},
 ];
 
 @NgModule({
