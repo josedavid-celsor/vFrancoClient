@@ -2,3 +2,18 @@
 #list{
     margin-top: 5%;
 }
+
+//Para literalmente que el css se aplique si o si, busca hasta lo más profundo del html
+//NOTA cuidado porque se propaga entre pantallas, si te mueves de un componenete a otro, los estilos se aplican
+::ng-deep{
+    .mat-mdc-menu-panel{
+        padding: 0.5vh 0.75vh 0.5vh 0.75vh;
+    }
+}
+
+mat-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    align-items: flex-start;
+  }

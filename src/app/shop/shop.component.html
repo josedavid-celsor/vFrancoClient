@@ -4,11 +4,14 @@
     <mat-label>Search</mat-label>
     <input matInput formControlName="search">
   </mat-form-field>
-  <mat-radio-group  formControlName="subTipos" >
-  <mat-radio-button class="example-radio-button" *ngFor="let subtipo of listaSubtipos" [value]="subtipo.codigo" (click)="resetButton(subtipo)">
-    {{subtipo.nombre}}
-  </mat-radio-button>
-  </mat-radio-group>
+  <button mat-button [matMenuTriggerFor]="menu"  id="nombre">Filtros</button>
+<mat-menu #menu="matMenu" >
+  <mat-radio-group  formControlName="subTipos" (click) = "$event.stopPropagation()">
+    <mat-radio-button class="example-radio-button" *ngFor="let subtipo of listaSubtipos" [value]="subtipo.codigo" (click)="resetButton(subtipo)">
+      {{subtipo.nombre}}
+    </mat-radio-button>
+    </mat-radio-group>
+</mat-menu>
   </form>
   <mat-grid-list cols="4" rowHeight="25rem" gutterSize="15px">
     <mat-grid-tile *ngFor="let producto of productosFilter">

@@ -21,9 +21,11 @@ export class ShopComponent {
   productosFilter: Array<Producto>
   FormSearch: FormGroup;
   codigo: string;
-
+  termino: string;
+  subTipoElegido: string;
   listaSubtipos: SubTipoProducto[]; 
   listaSubtiposElegidos: SubTipoProducto[] = [];
+
     ngOnInit(){
     this.FormSearch = new FormGroup({
       subTipos: new FormControl(null),
@@ -38,14 +40,18 @@ export class ShopComponent {
       this.getSubtipos()
     })
     this.FormSearch.get('search').valueChanges.subscribe(valor => {
+      this.termino = valor;
       this.getProductByType();
+    })
+    this.FormSearch.get('subTipos').valueChanges.subscribe(valor=>{
+      this.subTipoElegido = valor;
+      this.getProductByType()
     })
   }
 
   getProductByType(){
     /** Recogemos al menos 50 productos del tipo de producto elegido */
-    const termino: string =  this.FormSearch.value.search??null
-    this.productoService.getProductoPlist(0,50,termino,null,null,null,this.codigo).subscribe(filteredData=>{
+    this.productoService.getProductoPlist(0,50,this.termino,null,null,null,this.codigo, this.subTipoElegido).subscribe(filteredData=>{
       this.productosFilter = filteredData.content
     })
   }
@@ -58,10 +64,9 @@ export class ShopComponent {
     this.subTipoProductoService.getSubtiposProductoByCodigo(this.codigo).subscribe(subtiposProductos =>{
       this.listaSubtipos = subtiposProductos
     })
-    
   }
 
-/*   getSubtiposElegidos(subtipo: SubTipoProducto){
+/* getSubtiposElegidos(subtipo: SubTipoProducto){
     if(this.listaSubtiposElegidos.includes(subtipo)){
       this.listaSubtiposElegidos.splice(this.listaSubtiposElegidos.indexOf(subtipo),1)
     }else{

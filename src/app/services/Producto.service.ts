@@ -14,14 +14,15 @@ export class ProductoService {
   constructor(private restservice: RestService, private oHttp: HttpClient) { }
 
   /* http://localhost:8082/producto?page=1&size=5&direction=Sort.Direction.DESC */
-  getProductoPlist(page?: number, size?: number, termino?: string, id_usertype?: number, strSortField?: string, strOrderDirection?: string, codigo?: string): Observable<Page<Producto>> {
+  getProductoPlist(page?: number, size?: number, termino?: string, id_usertype?: number, strSortField?: string, strOrderDirection?: string, codigo?: string, subTipo?: string): Observable<Page<Producto>> {
 
     let pagination = "?";
     if (page) pagination += `page=${page}&`
     if (size) pagination += `size=${size}&`
     if (termino) pagination += `filter=${termino}&`
     if (codigo) pagination += `tipoproducto=${codigo}&`
-
+    if (subTipo) pagination += `subtipoproducto=${subTipo}&`
+    pagination = pagination.slice(0,-1);
     return new Observable(observer => {
       this.restservice.peticionHttp(this.productoApi + "/filtros", 'getPaginado', null, pagination).subscribe(respuesta => {
         observer.next(respuesta)
@@ -52,6 +53,7 @@ export class ProductoService {
   edit(producto: Producto, images: FormData) {
     const finalFormData: FormData = new FormData();
     delete producto['fotos'];
+    delete producto['tipoProducto']
     finalFormData.append("producto", JSON.stringify(producto));
     images.forEach(image => {
 
