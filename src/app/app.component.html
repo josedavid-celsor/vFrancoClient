@@ -6,10 +6,10 @@
     </button>
     <span> <a [routerLink]="['inicio']" id="logo">{{title}}</a></span>
     <div class="opcionesMenu">
-      <button mat-flat-button color="none" autosize [routerLink]="['shop/PRODUCTOSQUIMICOS']">Productos Químicos</button>
-      <button mat-flat-button color="none" autosize [routerLink]="['shop/CELULOSAYTEXTILES']">Celuss y textiles</button>
-      <button mat-flat-button color="none" autosize [routerLink]="['shop/COMPLEMENTOSDEHIGUIENE']">Complementos de Higuiene</button>
-      <button mat-flat-button color="none" autosize [routerLink]="['shop/MAQUINADELIMPIEZA']">Maquina de Limpieza</button>
+      <button mat-flat-button color="none" autosize [routerLink]="['shop/PRODUCTOSQUIMICOS']">Químicos</button>
+      <button mat-flat-button color="none" autosize [routerLink]="['shop/CELULOSAYTEXTILES']">Celulosas/textiles</button>
+      <button mat-flat-button color="none" autosize [routerLink]="['shop/COMPLEMENTOSDEHIGUIENE']">Higuiene</button>
+      <button mat-flat-button color="none" autosize [routerLink]="['shop/MAQUINADELIMPIEZA']">Maquina</button>
 
       <!-- ng container es como un div que no se renderiza luego, util para meter condiciones y bucles sin partir la extructura del html -->
       <ng-container *ngIf="auth.isAdmin()">
@@ -27,7 +27,6 @@
     <button mat-button [matMenuTriggerFor]="menu" *ngIf="userConect" id="nombre">{{userConect.nombre}}</button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item autosize [routerLink]="['factura']">Factura</button>
-      <button mat-menu-item autosize [routerLink]="['']">Compra</button>
     </mat-menu>
     <mat-icon mat-raised-button color="none" autosize *ngIf="auth.getUserConnected()" [routerLink]="['carrito']"
       class="carritoIcon">shopping_cart</mat-icon>

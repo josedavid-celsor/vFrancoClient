@@ -11,7 +11,9 @@ export class EstadisticasComponent {
   ngOnInit(){
     this.getCompras()
   }
-  //Enunciado, cuando reciba arrayd de compra, crear un array nuevo, con la interface que te pide grafico component, es decir, debera sacar la información de por cada producto, cuantas ventas se han producido en total
+  //Enunciado, cuando reciba arrayd de compra, crear un array nuevo,
+  //con la interface que te pide grafico component, es decir, debera sacar la información de por cada producto,
+  //cuantas ventas se han producido en total
   getCompras(){
     this.compraService.getAllByUsuario().subscribe(compra=>{
       console.log(compra)
