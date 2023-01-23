@@ -8,6 +8,8 @@ import { CompraService } from '../services/Compra.service';
 })
 export class EstadisticasComponent {
   compraService: CompraService = inject(CompraService);
+  datosGrafico: {nombre: string, cantidad: number}[] = [];
+
   ngOnInit(){
     this.getCompras()
   }
@@ -16,7 +18,15 @@ export class EstadisticasComponent {
   //cuantas ventas se han producido en total
   getCompras(){
     this.compraService.getAllByUsuario().subscribe(compra=>{
-      console.log(compra)
+      compra.forEach(element => {
+        if (this.datosGrafico[element.producto.nombre]) {
+          this.datosGrafico[element.producto.nombre].cantidad += element.cantidad;
+        } else {
+          this.datosGrafico[element.producto.nombre] = {nombre: element.producto.nombre, cantidad: element.cantidad}
+        }
+        //this.datosGrafico.push({nombre: element.producto.nombre, cantidad: element.cantidad});
+      });
     })
+    console.log(this.datosGrafico);
   }
 }
