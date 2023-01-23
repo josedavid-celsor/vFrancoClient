@@ -1,3 +1,3 @@
 <div>
-    <app-grafico [productosMasVendidos]="datosGrafico"></app-grafico>
+    <app-grafico *ngIf="datosGrafico" [productosMasVendidos]="datosGrafico"></app-grafico>
 </div>

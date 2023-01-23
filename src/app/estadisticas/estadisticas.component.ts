@@ -8,7 +8,7 @@ import { CompraService } from '../services/Compra.service';
 })
 export class EstadisticasComponent {
   compraService: CompraService = inject(CompraService);
-  datosGrafico: {nombre: string, cantidad: number}[] = [];
+  datosGrafico: {nombre: string, cantidad: number}[] = null;
 
   ngOnInit(){
     this.getCompras()
@@ -17,16 +17,18 @@ export class EstadisticasComponent {
   //con la interface que te pide grafico component, es decir, debera sacar la información de por cada producto,
   //cuantas ventas se han producido en total
   getCompras(){
+    let datos:[] = [];
     this.compraService.getAllByUsuario().subscribe(compra=>{
       compra.forEach(element => {
-        if (this.datosGrafico[element.producto.nombre]) {
-          this.datosGrafico[element.producto.nombre].cantidad += element.cantidad;
+        if (datos[element.producto.codigo]) {
+          datos[element.producto.codigo].cantidad += element.cantidad;
         } else {
-          this.datosGrafico[element.producto.nombre] = {nombre: element.producto.nombre, cantidad: element.cantidad}
+          datos[element.producto.codigo] = {nombre: element.producto.nombre, cantidad: element.cantidad}
         }
-        //this.datosGrafico.push({nombre: element.producto.nombre, cantidad: element.cantidad});
+        //datos.push({nombre: element.producto.nombre, cantidad: element.cantidad});
       });
     })
-    console.log(this.datosGrafico);
+    this.datosGrafico = datos;
+    console.log(datos);
   }
 }

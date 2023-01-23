@@ -10,28 +10,28 @@ export class GraficoComponent {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
   grafico: { name: string, value: number }[] = [];
-  @Input() productosMasVendidos: { nombre: string, cantidad: number }[] = [];
+  @Input() productosMasVendidos: { nombre: string, cantidad: number }[];
 
   ngOnInit() {
     this.preparaGrafico();
+    console.log(this.productosMasVendidos['154541fdsafd']);
   }
 
 
   preparaGrafico() {
-    console.log(this.productosMasVendidos)
+    console.log(this.productosMasVendidos);
     this.grafico = [];
     const nombres = Object.keys(this.productosMasVendidos);
     console.log(nombres);
-    nombres.sort();
+    console.log('me ejecuto ' + nombres.length);
 
-    for (const producto of nombres) {
+    nombres.sort();
+    /* this.productosMasVendidos.forEach( producto => {
       console.log(producto);
-      console.log(nombres)
-      this.grafico.push({
-        name: producto,
-        value: this.productosMasVendidos[producto].cantidad
-      })
-    }
-    //console.log(this.grafico)
+    }); */
+    for(const nombre of nombres) {
+      console.log(this.productosMasVendidos[nombre])
+      }
+    console.log(this.grafico);
   }
 }
