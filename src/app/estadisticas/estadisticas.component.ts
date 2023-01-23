@@ -8,7 +8,7 @@ import { CompraService } from '../services/Compra.service';
 })
 export class EstadisticasComponent {
   compraService: CompraService = inject(CompraService);
-  datosGrafico: {nombre: string, cantidad: number}[] = null;
+  datosGrafico: {nombre: string, cantidad: number}[];
 
   ngOnInit(){
     this.getCompras()
