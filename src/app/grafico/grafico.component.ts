@@ -30,7 +30,10 @@ export class GraficoComponent {
       console.log(producto);
     }); */
     for(const nombre of nombres) {
-      console.log(this.productosMasVendidos[nombre])
+      this.grafico.push({
+        name: nombre,
+        value: this.productosMasVendidos[nombre].cantidad
+      })
       }
     console.log(this.grafico);
   }
