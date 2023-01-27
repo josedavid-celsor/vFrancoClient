@@ -3,7 +3,7 @@ import { Producto } from '../interfaces/Producto';
 import { MatDialog } from '@angular/material/dialog';
 import { GTTableComponent } from '@aramirezj/ngx-generic-tables';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProductoService } from '../services/Producto.service';
 import { GFFormService, GF_APIRequest, GF_Form, GF_FormElement, GF_TypeControl, GF_TypeForm } from '@aramirezj/ngx-generic-form';
 import { TipoProductoService } from '../services/TipoProducto.service';
@@ -164,6 +164,7 @@ export class ProductoComponent {
       }
     })
     this.formTipo.changeTypeControl(GF_TypeControl.FILE, ["fotos"])
+    this.formTipo.setValidations([Validators.required, Validators.minLength(5)], ["nombre"])
   }
 
   generate() {

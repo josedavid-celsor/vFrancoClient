@@ -16,7 +16,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { MenuComponent } from './menu/menu.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './services/Auth.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TipoProductoService } from './services/TipoProducto.service';
 import { TipoProductoComponent } from './tipoProducto/tipoProducto.component';
 import {MatDialogModule} from '@angular/material/dialog'
@@ -44,6 +44,9 @@ import {MatRadioModule} from '@angular/material/radio';
 import { EstadisticasComponent } from './estadisticas/estadisticas.component';
 import { GraficoComponent } from './grafico/grafico.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { InterceptorService } from './services/Interceptor.service';
+import { PasarelaPagoComponent } from './pasarela-pago/pasarela-pago.component';
+
 
 
 
@@ -81,16 +84,20 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     MatPaginatorModule,
     GTTableComponent,
     MatSnackBarModule,
+    //Es un componente Stand Alone, que es un componente independiente 
     GFGenericFormComponent,
     MatCardModule,
     MatGridListModule,
     MatDividerModule,
     MatListModule,
     MatMenuModule,
+    //Es un componente Stand Alone, que es un componente independiente 
     GTInfiniteTableComponent,
     MatCheckboxModule,
     MatRadioModule,
-    NgxChartsModule
+    NgxChartsModule,
+    ////Es un componente Stand Alone, que es un componente independiente
+    PasarelaPagoComponent,
   ],
   providers: [
     AuthGuard,
@@ -100,7 +107,14 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     AdminGuard,
     GFFormService,
     SubTipoProductoService,
-    CompraService
+    CompraService,
+    InterceptorService,
+    //Para sobreescribir el interceptor de http para que utilice la clase que nosotros le digamos
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

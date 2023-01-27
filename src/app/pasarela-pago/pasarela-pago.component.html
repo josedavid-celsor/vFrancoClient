@@ -1,0 +1,41 @@
+
+<mat-dialog-content>
+    <form [formGroup]="PaymentForm">
+        <h1>Payment Form</h1>
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Enter your full name</mat-label>
+                <input matInput formControlName="name" required>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Enter your Card Number</mat-label>
+                <input matInput formControlName="cardNumber" required>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Enter your Security Code</mat-label>
+                <input matInput formControlName="securityCode" required>
+            </mat-form-field>
+        </div>
+        <div>
+            <gf-master-select [data]="ciudad" label="name" model="id" formControlName="ciudad" secondLabel="iva"
+            placeholder="Select one city"></gf-master-select>
+        </div>
+    </form>
+    <ngx-payment-card #ngxPaymentCard
+                      [cardNumber]="PaymentForm.value.cardNumber"
+                      [securityCode]="PaymentForm.value.securityCode"
+                      [name]="PaymentForm.value.name">
+    </ngx-payment-card>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="accent" (click)="cancelar()">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="comprarTodo()">Comprar</button>
+</mat-dialog-actions>
+
+
+
+<!-- Hacer un formulario, que recoja el los datos de arriba, más los datos de su residencia y la tarjeta obtendra los valores que escriba el usuario  -->

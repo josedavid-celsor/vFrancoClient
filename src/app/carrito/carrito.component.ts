@@ -3,6 +3,8 @@ import { CarritoService } from '../services/Carrito.service';
 import { Carrito } from '../interfaces/Carrito';
 import { ProductoService } from '../services/Producto.service';
 import { ActivatedRoute } from '@angular/router';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { PasarelaPagoComponent } from '../pasarela-pago/pasarela-pago.component';
 
 @Component({
   selector: 'app-carrito',
@@ -10,8 +12,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./carrito.component.scss']
 })
 export class CarritoComponent {
-  activatedRouted: ActivatedRoute = inject(ActivatedRoute)
+  activatedRouted: ActivatedRoute = inject(ActivatedRoute);
   carritoService: CarritoService = inject(CarritoService);
+  matDialog: MatDialog = inject(MatDialog);
   carritoFilter: Array<Carrito>;
 
   ngOnInit() {
@@ -19,8 +22,10 @@ export class CarritoComponent {
 
   }
 
-  comprarTodo() {
-    this.carritoService.comprarTodo().subscribe()
+  abrirPasarela(){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = "50vw";
+    const dialogRef = this.matDialog.open(PasarelaPagoComponent, dialogConfig)
   }
 
   vaciarCarrito() {

@@ -1,0 +1,11 @@
+mat-form-field{
+    width: 100%;
+}
+
+::ng-deep{
+    ngx-payment-card{
+        .container{
+            width: 100% !important;
+        }
+    }
+}
