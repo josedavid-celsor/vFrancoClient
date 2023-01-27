@@ -12,13 +12,14 @@ import { CarritoService } from '../services/Carrito.service';
 @Component({
   selector: 'app-pasarela-pago',
   standalone: true,
-  imports: [NgxPaymentCardModule, ReactiveFormsModule, MatFormFieldModule, GFMasterSelectComponent, MatDialogModule, MatInputModule, MatButtonModule],
+  imports: [NgxPaymentCardModule, ReactiveFormsModule, MatFormFieldModule, GFMasterSelectComponent, MatDialogModule,
+    MatInputModule, MatButtonModule],
   templateUrl: './pasarela-pago.component.html',
   styleUrls: ['./pasarela-pago.component.scss']
 })
 export class PasarelaPagoComponent {
 
-  PaymentForm: FormGroup; 
+  PaymentForm: FormGroup;
   carritoService: CarritoService = inject(CarritoService);
   dialogRef: MatDialogRef<PasarelaPagoComponent> = inject(MatDialogRef);
 

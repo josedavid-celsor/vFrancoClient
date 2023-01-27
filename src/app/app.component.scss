@@ -39,7 +39,12 @@
 
   #btnsDerecha {
   display: flex;
+  align-items: center;
   justify-content: space-evenly;
+  }
+
+  #logout {
+    margin-left: 0.5rem;
   }
 
   #hamburguesa {

@@ -23,7 +23,7 @@ const routes: Routes = [
   {path: "shop/:codigo", component: ShopComponent, title: "Tienda"},
   {path: "carrito", component: CarritoComponent, title: "Carrito"},
   {path: "factura", component: FacturaComponent, title: "Factura"},
-  {path: "estadisticas", component: EstadisticasComponent, title: "Estadisticas"},
+  {path: "estadisticas", component: EstadisticasComponent, title: "Estadisticas", canActivate:[AdminGuard]},
 ];
 
 @NgModule({
