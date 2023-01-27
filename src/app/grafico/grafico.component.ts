@@ -7,7 +7,7 @@ import { Component, Input, SimpleChange } from '@angular/core';
 })
 export class GraficoComponent {
   colorScheme: any = {
-    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+    domain: ['#D66FED', '#82B4ED', '#A02929', '#EDAC82']
   };
   grafico: { name: string, value: number }[] = [];
   @Input() productosMasVendidos: { nombre: string, cantidad: number }[];
