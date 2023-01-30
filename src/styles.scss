@@ -4,11 +4,12 @@ html,
 body {
   height: 100%;
 }
-
+button, .mat-card, h1, p, .mat-mdc-card-title, .mat-mdc-card-subtitle{
+  font-family: sans-serif !important;
+}
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: rgba(215, 250, 247, 0.7) !important;
+  
 }
 
 .notierror {
@@ -22,9 +23,6 @@ body {
   }
 }
 
-.mat-drawer-container {
-  background-color: rgba(215, 250, 247, 0.7) !important;
-}
 
 .carrito .mat-grid-tile-content{
   justify-content: flex-start;

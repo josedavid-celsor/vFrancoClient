@@ -1,7 +1,10 @@
 mat-card{
     width: 20vw;
-    min-height: 30vh;
+    height: 60vh;
+    justify-content: center;
+    text-align: center;
 }
+
 img{
     max-width: 20vw;
     max-height: 30vh;
@@ -15,6 +18,12 @@ img{
     align-items: center;
 }
 
+.mat-mdc-card-title{
+  font-weight: bold;
+  padding: 2vw;
+  margin-top: 2vh;
+}
+/* 
 @media only screen and (max-width: 1500px) {
  mat-card{
   justify-content: center;
@@ -22,14 +31,17 @@ img{
  ::ng-deep{
     .mat-mdc-card-title{
       text-align: center;
-      font-size: clamp(0.5rem, 2vw, 1.5rem);
+  
     }
-    .mat-mdc-card-title~.mat-mdc-card-subtitle{
-      font-size: clamp(0.2rem, 1.5vw, 1rem);
-    }
- }
- button{
-  font-size: clamp(0.2rem, 1.5vw, 1rem);
- }
-}
+  }
+} */
 
+@media only screen and (max-width: 800px){
+  mat-card{
+    width: 60vw;
+  }
+  img{
+    max-width: 90vw !important;
+    width: 40vw;
+  }
+}

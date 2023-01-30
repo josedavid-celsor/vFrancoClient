@@ -38,9 +38,9 @@ insert(producto: Producto){
   })
 }
 
-comprarTodo(id: number){
+comprarTodo(idIva: number){
   return new Observable<Carrito>(observe=>{
-    this.restservice.peticionHttp(this.carritotoApi, "post").subscribe(respuestaapi=>{
+    this.restservice.peticionHttp(this.carritotoApi + "/compra/" + idIva, "post").subscribe(respuestaapi=>{
       this.matsnackbar.open("Se ha comprado todo", "X", {
         duration: 3000
       })
