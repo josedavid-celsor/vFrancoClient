@@ -26,7 +26,7 @@ import {GTInfiniteTableComponent, GTTableComponent} from '@aramirezj/ngx-generic
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AdminGuard } from './guards/admin.guard';
 import { ProductoComponent } from './producto/producto.component';
-import { GFGenericFormComponent } from '@aramirezj/ngx-generic-form';
+import { GFGenericFormComponent, GFMatErrorMessagesDirective } from '@aramirezj/ngx-generic-form';
 import { GFFormService } from '@aramirezj/ngx-generic-form';
 import { ShopComponent } from './shop/shop.component';
 import {MatCardModule} from '@angular/material/card';
@@ -98,6 +98,7 @@ import { PasarelaPagoComponent } from './pasarela-pago/pasarela-pago.component';
     NgxChartsModule,
     ////Es un componente Stand Alone, que es un componente independiente
     PasarelaPagoComponent,
+    GFMatErrorMessagesDirective
   ],
   providers: [
     AuthGuard,

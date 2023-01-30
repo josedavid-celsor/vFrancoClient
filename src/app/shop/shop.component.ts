@@ -6,8 +6,7 @@ import { CarritoService } from '../services/Carrito.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { SubTipoProducto } from '../interfaces/SubTipoProducto';
 import { SubTipoProductoService } from '../services/SubTipoProduto.service';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable, map, shareReplay } from 'rxjs';
+
 
 @Component({
   selector: 'app-shop',
@@ -27,14 +26,7 @@ export class ShopComponent {
   subTipoElegido: string;
   listaSubtipos: SubTipoProducto[]; 
   listaSubtiposElegidos: SubTipoProducto[] = [];
-  breakpointObserver: BreakpointObserver = inject(BreakpointObserver);
-  cols: number = 4;
-  /** Observable para el responsive del sidenav */
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
+
     
     ngOnInit(){
     this.FormSearch = new FormGroup({
@@ -61,11 +53,6 @@ export class ShopComponent {
     })
   }
 
-  ngAfterViewInit(){
-      this.isHandset$.subscribe(value=>{
-        this.cols = value?1:4
-      })
-  }
   getProductByType(){
     /** Recogemos al menos 50 productos del tipo de producto elegido */
     this.productoService.getProductoPlist(0,50,this.termino,null,null,null,this.codigo, this.subTipoElegido).subscribe(filteredData=>{
@@ -82,14 +69,6 @@ export class ShopComponent {
       this.listaSubtipos = subtiposProductos
     })
   }
-
-/* getSubtiposElegidos(subtipo: SubTipoProducto){
-    if(this.listaSubtiposElegidos.includes(subtipo)){
-      this.listaSubtiposElegidos.splice(this.listaSubtiposElegidos.indexOf(subtipo),1)
-    }else{
-      this.listaSubtiposElegidos.push(subtipo)
-    }
-  } */
 
   resetButton(subtipo: SubTipoProducto) {
     if (subtipo.codigo === this.FormSearch.value.subTipos) {

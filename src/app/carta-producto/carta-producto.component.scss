@@ -1,47 +1,26 @@
-mat-card{
-    width: 20vw;
-    height: 60vh;
-    justify-content: center;
-    text-align: center;
-}
-
-img{
-    max-width: 20vw;
-    max-height: 30vh;
-    @media only screen and (max-width: 1500px) {
-      max-width: 15vw;
-      max-height: 25vh;
-      width: 15vw;
-    }
-}
-.mdc-card {
-    align-items: center;
-}
-
-.mat-mdc-card-title{
-  font-weight: bold;
+mat-card {
+  width: 20vw;
   padding: 2vw;
-  margin-top: 2vh;
-}
-/* 
-@media only screen and (max-width: 1500px) {
- mat-card{
-  justify-content: center;
- }
- ::ng-deep{
-    .mat-mdc-card-title{
-      text-align: center;
-  
-    }
-  }
-} */
+  text-align: center;
+  margin: 1vw;
 
-@media only screen and (max-width: 800px){
-  mat-card{
-    width: 60vw;
+  button {
+    text-align: center;
+    margin: auto;
   }
-  img{
-    max-width: 90vw !important;
+
+  @media only screen and (max-width: 1200px) {
+    width: 25vw;
+  }
+
+  @media only screen and (max-width: 1000px) {
     width: 40vw;
   }
+
+  @media only screen and (max-width: 600px) {
+    width: 60vw;
+  }
 }
+
+
+

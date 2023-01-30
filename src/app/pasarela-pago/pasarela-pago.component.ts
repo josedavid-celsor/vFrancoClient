@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { GFMasterSelectComponent } from '@aramirezj/ngx-generic-form';
+import { GFMasterSelectComponent, GFMatErrorMessagesDirective } from '@aramirezj/ngx-generic-form';
 import { NgxPaymentCardModule } from 'ngx-payment-card';
 import { CarritoService } from '../services/Carrito.service';
 
@@ -13,7 +13,7 @@ import { CarritoService } from '../services/Carrito.service';
   selector: 'app-pasarela-pago',
   standalone: true,
   imports: [NgxPaymentCardModule, ReactiveFormsModule, MatFormFieldModule, GFMasterSelectComponent, MatDialogModule,
-    MatInputModule, MatButtonModule],
+    MatInputModule, MatButtonModule, GFMatErrorMessagesDirective],
   templateUrl: './pasarela-pago.component.html',
   styleUrls: ['./pasarela-pago.component.scss']
 })
@@ -36,6 +36,7 @@ export class PasarelaPagoComponent {
       securityCode: new FormControl(null),
       name: new FormControl(null),
       ciudad: new FormControl(null),
+      expirationDate: new FormControl(null),
     });
    }
 

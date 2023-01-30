@@ -16,10 +16,8 @@
       </mat-menu>
     </div>
   </form>
-  {{cols}}
-  <mat-grid-list [cols]="cols" rowHeight="25rem" gutterSize="15px">
-    <mat-grid-tile *ngFor="let producto of productosFilter">
-      <app-carta-producto [producto]="producto" (add)="addCarrito(producto)"></app-carta-producto>
-    </mat-grid-tile>
-  </mat-grid-list>
+  <div class="productos">
+    <app-carta-producto *ngFor="let producto of productosFilter" [producto]="producto"
+      (add)="addCarrito(producto)"></app-carta-producto>
+  </div>
 </div>

@@ -34,6 +34,7 @@ export class ProductoService {
 
   create(producto: Producto, images: FormData) {
     const finalFormData: FormData = new FormData();
+    producto.precio = parseFloat(producto.precio.toString().replace(",", ".") as string);
     delete producto['fotos'];
     finalFormData.append("producto", JSON.stringify(producto));
     images.forEach(image => {
@@ -52,6 +53,7 @@ export class ProductoService {
 
   edit(producto: Producto, images: FormData) {
     const finalFormData: FormData = new FormData();
+    producto.precio = parseFloat(producto.precio.toString().replace(",", ".") as string);
     delete producto['fotos'];
     delete producto['tipoProducto']
     finalFormData.append("producto", JSON.stringify(producto));

@@ -7,5 +7,11 @@ mat-form-field{
         .container{
             width: 100% !important;
         }
+
+        #Front{
+            text:last-of-type{
+                display: none!important;
+            }
+        }
     }
 }
