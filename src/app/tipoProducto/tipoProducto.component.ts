@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { TipoProducto } from '../interfaces/TipoProducto';
 import { TipoProductoService } from '../services/TipoProducto.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -20,6 +20,11 @@ import { SubTipoProducto } from '../interfaces/SubTipoProducto';
 })
 export class TipoProductoComponent implements OnInit {
   listadoTipoProducto: TipoProducto[]
+  tipoProductoService: TipoProductoService = inject(TipoProductoService);
+  matDialog: MatDialog =  inject(MatDialog);
+  formService: GFFormService = inject(GFFormService);
+  subTipoProductoService: SubTipoProductoService = inject(SubTipoProductoService);
+
   columnasTipo: string[] = ["ID", "Name", "Code"]
   modeloTipo: string[] = ["id", "nombre", "codigo"]
 
@@ -45,11 +50,6 @@ export class TipoProductoComponent implements OnInit {
    */
   @ViewChild(GTInfiniteTableComponent, { static: false }) tablaTipos: GTInfiniteTableComponent;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  constructor(private tipoProductoService: TipoProductoService,
-    private matDialog: MatDialog,
-    private formService: GFFormService,
-    private subTipoProductoService: SubTipoProductoService) {
-  }
 
   ngAfterViewInit() {
 

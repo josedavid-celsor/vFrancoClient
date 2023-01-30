@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/Auth.service';
 import { User } from '../interfaces/User';
@@ -11,10 +11,9 @@ import { User } from '../interfaces/User';
 export class RegistrosComponent {
   hide = true;
 
-  FormRegistro: FormGroup; 
-  constructor(private authservice: AuthService){
-    
-  }
+  FormRegistro: FormGroup;
+  authservice: AuthService = inject(AuthService);
+
   ngOnInit(){
    this.FormRegistro = new FormGroup({
      username: new FormControl(null, [Validators.required, Validators.minLength(3)]),
@@ -26,13 +25,13 @@ export class RegistrosComponent {
      dni: new FormControl(null, [Validators.required])
    });
   }
- 
+
   register(){
    //Para sacar el valor del control de un formulario
   if(this.FormRegistro.valid){
     const usuario: User = this.FormRegistro.value
     this.authservice.register(usuario).subscribe()
   }//Mostrar notificación de error PROXIMAMENTE
-  
+
    }
 }

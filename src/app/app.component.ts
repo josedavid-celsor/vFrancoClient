@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { AuthService } from './services/Auth.service';
 import { User } from './interfaces/User';
 
@@ -9,10 +9,9 @@ import { User } from './interfaces/User';
 })
 export class AppComponent {
   userConect: User;
-  constructor(
-    public auth: AuthService,
-    private cd:ChangeDetectorRef
-  ){}
+  auth: AuthService = inject(AuthService);
+  cd:ChangeDetectorRef;
+
 
   title = 'vFrancoClient';
 
