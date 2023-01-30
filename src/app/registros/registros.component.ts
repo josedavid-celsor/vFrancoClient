@@ -12,7 +12,7 @@ export class RegistrosComponent {
   hide = true;
 
   FormRegistro: FormGroup;
-  authservice: AuthService = inject(AuthService);
+  authservice: AuthService = inject(AuthService)
 
   ngOnInit(){
    this.FormRegistro = new FormGroup({

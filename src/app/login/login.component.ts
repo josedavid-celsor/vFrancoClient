@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/Auth.service';
 
@@ -11,8 +11,10 @@ export class LoginComponent {
   hide = true;
 
  FormLogin: FormGroup;
- authservice: AuthService = inject(AuthService)
 
+ constructor(private authservice: AuthService){
+
+ }
  ngOnInit(){
   this.FormLogin = new FormGroup({
     username: new FormControl(null, [Validators.required, Validators.minLength(3)]),

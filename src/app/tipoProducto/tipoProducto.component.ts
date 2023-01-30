@@ -20,17 +20,16 @@ import { SubTipoProducto } from '../interfaces/SubTipoProducto';
 })
 export class TipoProductoComponent implements OnInit {
   listadoTipoProducto: TipoProducto[]
-  tipoProductoService: TipoProductoService = inject(TipoProductoService);
-  matDialog: MatDialog =  inject(MatDialog);
-  formService: GFFormService = inject(GFFormService);
-  subTipoProductoService: SubTipoProductoService = inject(SubTipoProductoService);
-
   columnasTipo: string[] = ["ID", "Name", "Code"]
   modeloTipo: string[] = ["id", "nombre", "codigo"]
 
   totalTipoProductos: number = 0
   FormSearch: FormGroup;
   lastpage: PageEvent;
+  tipoProductoService: TipoProductoService = inject(TipoProductoService);
+  matDialog: MatDialog =  inject(MatDialog);
+  formService: GFFormService = inject(GFFormService);
+  subTipoProductoService: SubTipoProductoService = inject(SubTipoProductoService);
   lastsearch: string;
   accionesTabla: GT_Action[][] = [[new GT_Action("add", "create a new subtype", 'add'), new GT_Action("edit", "edit a type", 'edit'),
   new GT_Action("delete", "delete a type", 'close'), new GT_Action("view", "view a type", 'visibility')], [new GT_Action("edit", "edit a type", 'edit'),
@@ -51,9 +50,7 @@ export class TipoProductoComponent implements OnInit {
   @ViewChild(GTInfiniteTableComponent, { static: false }) tablaTipos: GTInfiniteTableComponent;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-  ngAfterViewInit() {
 
-  }
   ngOnInit() {
     this.getTipoProductoPlist();
     this.formTipo.APIRequest.edition = this.peticionUpdate

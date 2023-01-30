@@ -23,13 +23,12 @@ export class ProductoComponent {
   FormSearch: FormGroup;
   lastpage: PageEvent;
   lastsearch: string;
-  listSubTipo: Array<SubTipoProducto>;
+  listSubTipo: Array<SubTipoProducto>
   productoService: ProductoService = inject(ProductoService);
   matDialog: MatDialog = inject(MatDialog);
   formService: GFFormService = inject(GFFormService);
-  subTipoProductoService: SubTipoProductoService = inject(SubTipoProductoService)
-  tipoProductoService: TipoProductoService = inject(TipoProductoService);
-
+  subTipoProductoService: SubTipoProductoService = inject(SubTipoProductoService);
+  tipoProductoService: TipoProductoService = inject(TipoProductoService)
   /**
    * Es un formulario que muestra los campos de tipo producto y dependiendo de su tipo permitira hacer el crud
    */
@@ -39,6 +38,7 @@ export class ProductoComponent {
    */
   @ViewChild(GTTableComponent, { static: false }) tablaTipos: GTTableComponent;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+
 
   ngAfterViewInit() {
 
