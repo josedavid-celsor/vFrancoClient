@@ -8,7 +8,7 @@
     <div class="opcionesMenu">
       <button mat-flat-button color="none" autosize [routerLink]="['shop/PRODUCTOSQUIMICOS']">Químicos</button>
       <button mat-flat-button color="none" autosize [routerLink]="['shop/CELULOSAYTEXTILES']">Celulosas/textiles</button>
-      <button mat-flat-button color="none" autosize [routerLink]="['shop/COMPLEMENTOSDEHIGUIENE']">Higuiene</button>
+      <button mat-flat-button color="none" autosize [routerLink]="['shop/COMPLEMENTOSDEHIGUIENE']">Higiene</button>
       <button mat-flat-button color="none" autosize [routerLink]="['shop/MAQUINADELIMPIEZA']">Maquina</button>
 
       <!-- ng container es como un div que no se renderiza luego, util para meter condiciones y bucles sin partir la extructura del html -->
@@ -42,11 +42,20 @@
 <!-- Contenido de la web -->
 <mat-drawer-container class="web-container" autosize>
   <mat-drawer #drawer class="web-sidenav" mode="over">
-    <div class="elementoBarra" [routerLink]="['shop/PRODUCTOSQUIMICOS']"> Productos Químicos</div>
-    <div class="elementoBarra" [routerLink]="['shop/CELULOSAYTEXTILES']"> Celulosas y Textiles</div>
-    <div class="elementoBarra" [routerLink]="['shop/COMPLEMENTOSDEHIGUIENE']"> Complementos de Higuiene</div>
-    <div class="elementoBarra" [routerLink]="['shop/MAQUINADELIMPIEZA']"> Maquina de Limpieza</div>
+    <div class="elementoBarra" [routerLink]="['shop/PRODUCTOSQUIMICOS']"> Químicos</div>
+    <div class="elementoBarra" [routerLink]="['shop/CELULOSAYTEXTILES']"> Celulosas/Textiles</div>
+    <div class="elementoBarra" [routerLink]="['shop/COMPLEMENTOSDEHIGUIENE']"> Higiene</div>
+    <div class="elementoBarra" [routerLink]="['shop/MAQUINADELIMPIEZA']"> Maquina</div>
+    <ng-container *ngIf="auth.isAdmin()">
+     <button mat-flat-button color="none" [matMenuTriggerFor]="menu1" autosize>Panel de control</button>
+     <mat-menu #menu1="matMenu">
+       <button mat-menu-item autosize [routerLink]="['tipoProducto']">Tipos/Sub-Tipos de Producto</button>
+       <button mat-menu-item autosize [routerLink]="['producto']">Producto</button>
+       <button mat-menu-item autosize [routerLink]="['estadisticas']">Estadisticas de productos</button>
+     </mat-menu>
+   </ng-container>
   </mat-drawer>
+   <!-- ng container es como un div que no se renderiza luego, util para meter condiciones y bucles sin partir la extructura del html -->
 
   <div class="example-sidenav-content">
     <!-- Resultado del enrutamiento -->

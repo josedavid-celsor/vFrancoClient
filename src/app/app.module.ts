@@ -13,7 +13,6 @@ import { RegistrosComponent } from './registros/registros.component'
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { InicioComponent } from './inicio/inicio.component';
-import { MenuComponent } from './menu/menu.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './services/Auth.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -57,7 +56,6 @@ import { PasarelaPagoComponent } from './pasarela-pago/pasarela-pago.component';
     LoginComponent,
     RegistrosComponent,
     InicioComponent,
-    MenuComponent,
     TipoProductoComponent,
     ProductoComponent,
     ShopComponent,
@@ -84,14 +82,14 @@ import { PasarelaPagoComponent } from './pasarela-pago/pasarela-pago.component';
     MatPaginatorModule,
     GTTableComponent,
     MatSnackBarModule,
-    //Es un componente Stand Alone, que es un componente independiente 
+    //Es un componente Stand Alone, que es un componente independiente
     GFGenericFormComponent,
     MatCardModule,
     MatGridListModule,
     MatDividerModule,
     MatListModule,
     MatMenuModule,
-    //Es un componente Stand Alone, que es un componente independiente 
+    //Es un componente Stand Alone, que es un componente independiente
     GTInfiniteTableComponent,
     MatCheckboxModule,
     MatRadioModule,

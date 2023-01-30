@@ -25,7 +25,7 @@ export class FacturaComponent {
   listTipo: Array<TipoProducto>
   facturaService: FacturaService = inject(FacturaService);
   compraService: CompraService = inject(CompraService);
-  accionesTabla: GT_Action[] = [new GT_Action("download", "dowload a new subtype", 'download'), new GT_Action("view", "view a type", 'visibility')]
+  accionesTabla: GT_Action[] = [new GT_Action("download", "dowload a new subtype", 'download')]
 
   /**
    * Para tener acceso a los metodos de la tabla (se usa para el refrescar tabla)
