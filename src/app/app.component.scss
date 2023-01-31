@@ -6,7 +6,7 @@
 .web-container{
   height: 94vh;
   overflow: auto;
-  background-color: rgba(215, 250, 247, 0.7) !important; 
+  background-color: rgba(215, 250, 247, 0.7) !important;
 }
   .example-spacer {
   flex: 1 1 auto;
@@ -20,7 +20,9 @@
 
   #nombre {
   margin-right: 3vw;
-  background-color: #374ca0;
+  background-color: #abd5e1;
+  color: #4054b4;
+  font-weight: bold;
   }
 
   #logo {
