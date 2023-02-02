@@ -46,6 +46,9 @@ export class FacturaComponent {
     this.facturaService.getFacturaPlist().subscribe(facturas => {
       this.listadoFactura = facturas.content;
       this.totalFacturas = facturas.totalElements;
+      this.listadoFactura.forEach(factura => {
+        factura.totalPrecio = parseFloat(factura.totalPrecio.toFixed(2));
+      });
       if (this.tablaTipos) {
         this.tablaTipos.refreshData(this.listadoFactura)
       }
@@ -70,9 +73,13 @@ export class FacturaComponent {
   }
 
   getFacturaPaginada() {
-    this.facturaService.getFacturaPlist(this.lastpage?.pageIndex, this.lastpage?.pageSize, this.lastsearch).subscribe(tipoProducto => {
-      this.tablaTipos.refreshData(tipoProducto.content)
-      this.totalFacturas = tipoProducto.totalElements
+    this.facturaService.getFacturaPlist(this.lastpage?.pageIndex, this.lastpage?.pageSize, this.lastsearch)
+    .subscribe(tipoProducto => {
+      this.tablaTipos.refreshData(tipoProducto.content);
+      this.totalFacturas = tipoProducto.totalElements;
+      tipoProducto.content.forEach(factura => {
+        factura.totalPrecio = parseFloat(factura.totalPrecio.toFixed(2));
+      });
     })
   }
 
@@ -105,14 +112,14 @@ export class FacturaComponent {
       const bodyTabla = []
       let subTotal = 0;
       for (const compra of compras) {
-        bodyTabla.push([compra.producto.nombre, compra.cantidad, compra.producto.precio, compra.cantidad * compra.producto.precio])
+        bodyTabla.push([compra.producto.nombre, compra.cantidad, compra.producto.precio.toFixed(2), compra.cantidad * compra.producto.precio])
         subTotal += compra.cantidad * compra.producto.precio;
         console.log(bodyTabla)
       }
       bodyTabla.push([' ', ' ', ' ', ' ']);
-      bodyTabla.push([' ', ' ', 'Subtotal', subTotal]);
+      bodyTabla.push([' ', ' ', 'Subtotal', subTotal.toFixed(2)]);
       bodyTabla.push([' ', ' ', 'IVA', factura.iva + " %"]);
-      bodyTabla.push([' ', ' ', 'Total', factura.totalPrecio + " €"]);
+      bodyTabla.push([' ', ' ', 'Total', factura.totalPrecio.toFixed(2) + " €"]);
       //console.log(subTotal);
       autoTable(doc, {
         head: [['Nombre Producto', 'Cantidad', 'Precio Unitario', 'Importe']],

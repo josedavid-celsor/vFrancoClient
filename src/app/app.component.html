@@ -4,12 +4,12 @@
     <button mat-icon-button id="hamburguesa" (click)="drawer.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <span> <a [routerLink]="['inicio']" id="logo">{{title}}</a></span>
+     <a [routerLink]="['inicio']" id="logo"><img width="130" height="60" src="../assets/img/logo.png"></a>
     <div class="opcionesMenu">
       <button mat-flat-button color="none" autosize [routerLink]="['shop/PRODUCTOSQUIMICOS']">Químicos</button>
       <button mat-flat-button color="none" autosize [routerLink]="['shop/CELULOSAYTEXTILES']">Celulosas/textiles</button>
       <button mat-flat-button color="none" autosize [routerLink]="['shop/COMPLEMENTOSDEHIGUIENE']">Higiene</button>
-      <button mat-flat-button color="none" autosize [routerLink]="['shop/MAQUINADELIMPIEZA']">Maquina</button>
+      <button mat-flat-button color="none" autosize [routerLink]="['shop/MAQUINADELIMPIEZA']">Maquinaria</button>
 
       <!-- ng container es como un div que no se renderiza luego, util para meter condiciones y bucles sin partir la extructura del html -->
       <ng-container *ngIf="auth.isAdmin()">
@@ -45,7 +45,8 @@
     <div class="elementoBarra" [routerLink]="['shop/PRODUCTOSQUIMICOS']"> Químicos</div>
     <div class="elementoBarra" [routerLink]="['shop/CELULOSAYTEXTILES']"> Celulosas/Textiles</div>
     <div class="elementoBarra" [routerLink]="['shop/COMPLEMENTOSDEHIGUIENE']"> Higiene</div>
-    <div class="elementoBarra" [routerLink]="['shop/MAQUINADELIMPIEZA']"> Maquina</div>
+    <div class="elementoBarra" [routerLink]="['shop/MAQUINADELIMPIEZA']"> Maquinaria</div>
+    <!-- ng container es como un div que no se renderiza luego, util para meter condiciones y bucles sin partir la extructura del html -->
     <ng-container *ngIf="auth.isAdmin()">
      <button mat-flat-button color="none" [matMenuTriggerFor]="menu1" autosize>Panel de control</button>
      <mat-menu #menu1="matMenu">
@@ -55,11 +56,25 @@
      </mat-menu>
    </ng-container>
   </mat-drawer>
-   <!-- ng container es como un div que no se renderiza luego, util para meter condiciones y bucles sin partir la extructura del html -->
+  <!-- Resultado del enrutamiento -->
+  <router-outlet></router-outlet>
+  <footer>
+    <div>
+      <h2>Productos</h2>
+      <a [routerLink]="['tipoProducto']">QUÍMICOS</a> <br>
+      <a [routerLink]="['shop/CELULOSAYTEXTILES']">CELULOSAS/TEXTILES</a><br>
+      <a [routerLink]="['shop/COMPLEMENTOSDEHIGUIENE']">HIGIENE</a><br>
+      <a [routerLink]="['shop/MAQUINADELIMPIEZA']">MAQUINARIA</a>
+    </div>
+    <div>
+      <h2>Contact Us</h2>
+      <p>Numero: 622547845</p>
+      <p>Correo: animo@gmail.com</p>
+    </div>
+    <div>
+      <img src="../assets/img/logo.png" alt="logo">
+    </div>
+  </footer>
 
-  <div class="example-sidenav-content">
-    <!-- Resultado del enrutamiento -->
-    <router-outlet></router-outlet>
-  </div>
 
 </mat-drawer-container>

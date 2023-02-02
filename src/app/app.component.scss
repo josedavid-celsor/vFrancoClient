@@ -1,76 +1,94 @@
 #toolbar {
-  height: 6vh;
+  height: 8vh;
   display: flex;
   justify-content: space-between;
-  }
-.web-container{
-  height: 94vh;
+}
+
+.web-container {
+  height: 92vh;
   overflow: auto;
   background-color: rgba(215, 250, 247, 0.7) !important;
 }
-  .example-spacer {
-  flex: 1 1 auto;
-  }
 
-  .opcionesMenu {
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.opcionesMenu {
   width: 100%;
   display: flex;
   justify-content: space-around;
-  }
+}
 
-  #nombre {
+#nombre {
   margin-right: 3vw;
   background-color: #abd5e1;
   color: #4054b4;
   font-weight: bold;
-  }
+}
 
-  #logo {
+#logo {
   text-decoration: none;
   color: white;
-  }
+}
 
-  .carritoIcon {
+.carritoIcon {
   margin-right: 5%;
-  }
+}
 
-  .mat-icon {
+.mat-icon {
   cursor: pointer;
-  }
+}
 
-  #btnsIzquierda {
+#btnsIzquierda {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  }
+}
 
-  #btnsDerecha {
+#btnsDerecha {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  }
+}
 
-  #logout {
-    margin-left: 0.5rem;
-  }
+#logout {
+  margin-left: 0.5rem;
+}
 
-  #hamburguesa {
+#hamburguesa {
   display: none;
-  }
+}
 
-  @media only screen and (max-width: 1500px) {
+@media only screen and (max-width: 1500px) {
   #hamburguesa {
-  display: block !important;
+    display: block !important;
   }
 
   .opcionesMenu {
-  display: none;
+    display: none;
   }
 
   .elementoBarra {
-  border-bottom: 2px solid black;
-  padding: 12px 24px;
-  margin-bottom: 2vh;
-  cursor: pointer;
+    border-bottom: 2px solid black;
+    padding: 12px 24px;
+    margin-bottom: 2vh;
+    cursor: pointer;
   }
-  }
+}
+
+footer{
+  display: flex;
+  border-top: 0.4vh solid black;
+  border-bottom:  0.4vh solid black;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+footer a{
+  text-decoration: none;
+  color: black;
+}
