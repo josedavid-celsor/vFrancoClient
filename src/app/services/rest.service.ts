@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Injectable, Inject, PLATFORM_ID, EventEmitter } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID, EventEmitter, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { enviroment } from 'src/enviroments/enviroment';
 import { Observable } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 /** Servicio que prepara y ejecuta las peticiones */
 @Injectable({
   providedIn:
@@ -17,6 +18,7 @@ export class RestService {
   public isWaiting: EventEmitter<boolean>
   /** Número de solicitudes en curso */
   solicitudes: number = 0;
+  private matsnackbar: MatSnackBar = inject(MatSnackBar)
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private http: HttpClient
@@ -98,6 +100,9 @@ export class RestService {
         this.isWaiting.emit(false);
         observer.error(error);
         observer.complete();
+        this.matsnackbar.open(error.error, "X", {
+          duration: 3000
+        })
       })
     })
   }

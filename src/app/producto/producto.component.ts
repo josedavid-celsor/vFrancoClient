@@ -165,8 +165,8 @@ export class ProductoComponent {
     this.formTipo.changeTypeControl(GF_TypeControl.FILE, ["fotos"])
     this.formTipo.setValidations([Validators.required, Validators.minLength(5)], ["nombre"])
     this.formTipo.setValidations([Validators.required, Validators.minLength(10)], ["codigo"])
-    this.formTipo.setValidations([Validators.required, Validators.minLength(1)], ["cantidad"])
-    this.formTipo.setValidations([Validators.required, Validators.minLength(2)], ["precio"])
+    this.formTipo.setValidations([Validators.required, Validators.min(1)], ["cantidad"])
+    this.formTipo.setValidations([Validators.required, Validators.min(1), Validators.max(9999)], ["precio"])
     this.formTipo.setValidations([Validators.required, Validators.minLength(1)], ["tipoProducto"])
     this.formTipo.setValidations([Validators.required, Validators.minLength(1)], ["subTipoProducto"])
   }
