@@ -45,6 +45,7 @@ import { GraficoComponent } from './grafico/grafico.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { InterceptorService } from './services/Interceptor.service';
 import { PasarelaPagoComponent } from './pasarela-pago/pasarela-pago.component';
+import { RecuperacionComponent } from './recuperacion/recuperacion.component';
 
 
 
@@ -63,7 +64,8 @@ import { PasarelaPagoComponent } from './pasarela-pago/pasarela-pago.component';
     CartaProductoComponent,
     FacturaComponent,
     EstadisticasComponent,
-    GraficoComponent
+    GraficoComponent,
+    RecuperacionComponent
    ],
   imports: [
     BrowserModule,

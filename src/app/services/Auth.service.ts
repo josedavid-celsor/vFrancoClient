@@ -96,4 +96,66 @@ export class AuthService {
   getUser() {
     return JSON.parse(localStorage.getItem('user'));
   }
+
+  verifyEmail(verification_code: string): Observable<boolean> {
+    return new Observable<boolean>(observe => {
+      if (verification_code) {
+        this.restservice.peticionHttp(this.authapi + "/verifyMail" + "?verification_code=" + verification_code, "get"
+        ).subscribe(respuestaapi => {
+          observe.next(respuestaapi)
+          observe.complete()
+        })
+      } else {
+        observe.next(false)
+        observe.complete()
+      }
+    })
+  }
+
+  verifyRecover(passworCode: string): Observable<boolean> {
+    return new Observable<boolean>(observe => {
+      if (passworCode) {
+        this.restservice.peticionHttp(this.authapi + "/verifyRecover" + "?passworCode=" + passworCode, "get"
+        ).subscribe(respuestaapi => {
+          observe.next(respuestaapi)
+          observe.complete()
+        })
+      } else {
+        observe.next(false)
+        observe.complete()
+      }
+    })
+  }
+
+  recover(recoverCode: string, password1: string, password2: string): Observable<string> {
+    const request = {recoverCode, password1, password2};
+    return new Observable<string>(observe => {
+      if (recoverCode) {
+        this.restservice.peticionHttp(this.authapi + "/recover", "post", request
+        ).subscribe(respuestaapi => {
+          observe.next(respuestaapi)
+          observe.complete()
+        })
+      } else {
+        observe.next("No hay codigo de recuperación")
+        observe.complete()
+      }
+    })
+  }
+
+  startRecover(usuario: string): Observable<boolean> {
+    return new Observable<boolean>(observe => {
+      if (usuario) {
+        this.restservice.peticionHttp(this.authapi + "/iniciarRecover" + "?usuario=" + usuario, "get"
+        ).subscribe(respuestaapi => {
+          observe.next(respuestaapi)
+          observe.complete()
+        })
+      } else {
+        observe.next(false)
+        observe.complete()
+      }
+    })
+  }
+
 }

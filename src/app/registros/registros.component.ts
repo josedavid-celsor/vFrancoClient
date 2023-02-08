@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/Auth.service';
 import { User } from '../interfaces/User';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-registros',
@@ -14,9 +15,23 @@ export class RegistrosComponent {
 
   FormRegistro: FormGroup;
   authservice: AuthService = inject(AuthService)
+  //Sirve para recoger parametros por URL
+  actRouted: ActivatedRoute = inject(ActivatedRoute)
+  router: Router = inject(Router)
 
 
   ngOnInit(){
+    this.actRouted.params.subscribe(params=>{
+      if(params.verificationCode){
+        this.authservice.verifyEmail(params.verificationCode).subscribe(verificado=>{
+          if(verificado){
+            this.router.navigate(['inicio']);
+          }else{
+            //Proximamente mostrar mensaje de error(Porfa no me olvides)
+          }
+        })
+      }
+    })
    this.FormRegistro = new FormGroup({
      username: new FormControl(null, [Validators.required, Validators.minLength(3)]),
      password: new FormControl(null, [Validators.required]),

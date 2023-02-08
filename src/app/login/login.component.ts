@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { GFFormService, GF_Form, GF_TypeForm } from '@aramirezj/ngx-generic-form';
 import { AuthService } from '../services/Auth.service';
 
 @Component({
@@ -11,8 +12,9 @@ export class LoginComponent {
   hide = true;
 
  FormLogin: FormGroup;
-
+ formOpen: GF_Form<{user: string}> = new GF_Form(GF_TypeForm.CREATION, ["user"], ["User"], "Creación");
  authservice: AuthService = inject(AuthService)
+  formService: GFFormService = inject(GFFormService);
 
  ngOnInit(){
   this.FormLogin = new FormGroup({
@@ -28,4 +30,14 @@ export class LoginComponent {
   this.authservice.loginRequest(username, password).subscribe()
   return false;
  }
+
+ abrirForm() {
+  this.formOpen.changeTypeForm(null, GF_TypeForm.CREATION, "Enter your user to recover")
+  this.formService.openForm(this.formOpen).subscribe(response => {
+   const usuario: string = response.user;
+   this.authservice.startRecover(usuario).subscribe(notify=>{
+    //Proximamente se envia un correo de notificacion pop app
+   })
+  });
+}
 }
