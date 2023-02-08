@@ -1,18 +1,26 @@
 <form [formGroup]="FormRecover">
     <h1>Password Recover</h1>
     <div>
-        <mat-form-field appearance="fill">
-            <mat-label>Enter your password</mat-label>
-            <input matInput formControlName="password1" required>
-        </mat-form-field>
-    </div>
-    <div>
-        <mat-form-field appearance="fill">
-            <mat-label>Confirm your password</mat-label>
-            <input matInput formControlName="password2" required>
-        </mat-form-field>
-    </div>
-    <div>
+      <mat-form-field appearance="fill">
+          <mat-label>Enter your password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+      </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+        <mat-label>Confirm your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+</div>
+    <div id="botonPassword">
         <button mat-raised-button color="primary" (click)="changePassword()">Cambiar Contraseña</button>
     </div>
 </form>

@@ -9,7 +9,7 @@ import { AuthService } from '../services/Auth.service';
   styleUrls: ['./recuperacion.component.scss']
 })
 export class RecuperacionComponent {
-
+  hide = true;
   FormRecover: FormGroup;
   actRouted: ActivatedRoute = inject(ActivatedRoute)
   router: Router = inject(Router)
