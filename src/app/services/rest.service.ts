@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, Inject, PLATFORM_ID, EventEmitter, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { enviroment } from 'src/enviroments/enviroment';
+import { enviroment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 /** Servicio que prepara y ejecuta las peticiones */

@@ -1,4 +1,4 @@
-export const enviromentProd={
+export const enviroment={
     production: true,
     api: "https://vfranco-production.up.railway.app/api/"
 }
