@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { User } from '../interfaces/User';
 import { RestService } from './rest.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 export class AuthService {
@@ -10,6 +11,7 @@ export class AuthService {
   authapi: string = "Auth";
   usuariConectado: User;
   usuarioConectado$: Subject<User> = new Subject();
+  matSnackbar: MatSnackBar = inject(MatSnackBar);
 
   constructor(
     private restservice: RestService,
@@ -49,8 +51,8 @@ export class AuthService {
         usuario
       ).subscribe(respuestaapi => {
         if (respuestaapi) {
-          localStorage.setItem("token", respuestaapi.token)
-          this.usuarioConectado$.next(respuestaapi);
+         this.matSnackbar.open("The register was succesful, check your mail for verification", "x", {duration: 5000})
+         this.routed.navigate(['login']);
         }
       })
 

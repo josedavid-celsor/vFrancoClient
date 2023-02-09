@@ -4,24 +4,29 @@
         <mat-form-field appearance="fill">
             <mat-label>Enter your name</mat-label>
             <input matInput formControlName="nombre" required>
+            <mat-error gf-matErrorMessages></mat-error>
         </mat-form-field>
     </div>
     <div>
         <mat-form-field appearance="fill">
             <mat-label>Enter your dni</mat-label>
             <input matInput formControlName="dni" required>
+            <mat-error *ngIf="!FormRegistro.get('dni').hasError('invalidDni') && FormRegistro.get('dni').touched" gf-matErrorMessages></mat-error>
+            <mat-error *ngIf="FormRegistro.get('dni').hasError('invalidDni')">The DNI doesn`t have a valid format</mat-error>
         </mat-form-field>
     </div>
     <div>
         <mat-form-field appearance="fill">
             <mat-label>Enter your surname</mat-label>
             <input matInput formControlName="apellido">
+            <mat-error gf-matErrorMessages></mat-error>
         </mat-form-field>
     </div>
     <div>
         <mat-form-field appearance="fill">
             <mat-label>Enter your lastname</mat-label>
             <input matInput formControlName="apellido2">
+            <mat-error gf-matErrorMessages></mat-error>
         </mat-form-field>
     </div>
 
@@ -29,15 +34,14 @@
         <mat-form-field appearance="fill">
           <mat-label>Enter your email</mat-label>
           <input matInput placeholder="pat@example.com" formControlName="email" required>
-
+          <mat-error gf-matErrorMessages></mat-error>
         </mat-form-field>
       </div>
     <div>
         <mat-form-field appearance="fill">
             <mat-label>Enter your username</mat-label>
             <input matInput formControlName="username" required>
-            <mat-error *ngIf="FormRegistro.get('username').hasError('required')">Este campo es obligatorio</mat-error>
-            <mat-error *ngIf="FormRegistro.get('username').hasError('minlength')">Este campo debe alcanzar los 3 caracteres</mat-error>
+            <mat-error gf-matErrorMessages></mat-error>
         </mat-form-field>
     </div>
 
@@ -45,9 +49,23 @@
         <mat-form-field appearance="fill">
             <mat-label>Enter your password</mat-label>
             <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+            <mat-error gf-matErrorMessages></mat-error>
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Confirm your password</mat-label>
+            <input matInput [type]="hide2 ? 'password' : 'text'" formControlName="password2" pattern="{{ FormRegistro.get('password').value }}">
+            <mat-error *ngIf="!FormRegistro.get('password2').hasError('pattern') && FormRegistro.get('password2').touched" gf-matErrorMessages></mat-error>
+            <mat-error *ngIf="FormRegistro.get('password2').hasError('pattern')">The password must match</mat-error>
+            <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide2">
+                <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
         </mat-form-field>
     </div>

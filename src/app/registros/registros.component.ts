@@ -4,6 +4,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/Auth.service';
 import { User } from '../interfaces/User';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DniValidator, tipoIdentificador } from '../validators/dni-validator.directive';
+import { CustomEmailValidator } from '../validators/custom-email.validator';
 
 @Component({
   selector: 'app-registros',
@@ -12,12 +14,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class RegistrosComponent {
   hide = true;
+  hide2 = true;
 
   FormRegistro: FormGroup;
   authservice: AuthService = inject(AuthService)
   //Sirve para recoger parametros por URL
   actRouted: ActivatedRoute = inject(ActivatedRoute)
   router: Router = inject(Router)
+
 
 
   ngOnInit(){
@@ -33,13 +37,14 @@ export class RegistrosComponent {
       }
     })
    this.FormRegistro = new FormGroup({
-     username: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-     password: new FormControl(null, [Validators.required]),
-     apellido: new FormControl(null, [Validators.required]),
-     email: new FormControl(null, [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
-     nombre: new FormControl(null, [Validators.required]),
-     apellido2: new FormControl(null),
-     dni: new FormControl(null, [Validators.required])
+     username: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(256)]),
+     password: new FormControl(null, [Validators.required, Validators.maxLength(256)]),
+     password2: new FormControl(null, [Validators.required, Validators.maxLength(256)]),
+     apellido: new FormControl(null, [Validators.required, Validators.maxLength(256)]),
+     email: new FormControl(null, [Validators.required, CustomEmailValidator, Validators.maxLength(256)]),
+     nombre: new FormControl(null, [Validators.required, Validators.maxLength(256)]),
+     apellido2: new FormControl(null, [Validators.maxLength(256)]),
+     dni: new FormControl(null, [Validators.required, DniValidator()])
    });
   }
 
