@@ -1,4 +1,4 @@
 export const enviromentProd={
     production: true,
-    api: "http://vFranco:8082"
+    api: "https://vfranco-production.up.railway.app/api/"
 }
