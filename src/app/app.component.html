@@ -13,7 +13,7 @@
 
       <!-- ng container es como un div que no se renderiza luego, util para meter condiciones y bucles sin partir la extructura del html -->
       <ng-container *ngIf="auth.isAdmin()">
-        <button mat-flat-button color="none" [matMenuTriggerFor]="menu1" autosize>Panel de control</button>
+        <button mat-flat-button color="none" [matMenuTriggerFor]="menu1" autosize>PANEL DE CONTROL</button>
         <mat-menu #menu1="matMenu">
           <button mat-menu-item autosize [routerLink]="['tipoProducto']">Tipos/Sub-Tipos de Producto</button>
           <button mat-menu-item autosize [routerLink]="['producto']">Producto</button>
