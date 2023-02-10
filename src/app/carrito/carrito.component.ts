@@ -5,6 +5,7 @@ import { ProductoService } from '../services/Producto.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { PasarelaPagoComponent } from '../pasarela-pago/pasarela-pago.component';
+import { enviroment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-carrito',
@@ -16,6 +17,7 @@ export class CarritoComponent {
   carritoService: CarritoService = inject(CarritoService);
   matDialog: MatDialog = inject(MatDialog);
   carritoFilter: Array<Carrito>;
+  apibackEnd: string = enviroment.api;
 
   ngOnInit() {
     this.getCarrito()
