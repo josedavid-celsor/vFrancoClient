@@ -98,7 +98,7 @@ export class RestService {
       }, error => {
         this.solicitudes--;
         this.isWaiting.emit(false);
-        observer.error(error);
+        observer.error(error.message);
         observer.complete();
         console.log(error)
         this.matsnackbar.open(error.error.message, "X", {
