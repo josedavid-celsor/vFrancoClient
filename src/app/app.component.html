@@ -25,8 +25,8 @@
     </div>
   </div>
   <div id="btnsDerecha">
-    <button mat-raised-button color="none" autosize [routerLink]="['login']" *ngIf="!auth.getUserConnected()">Sign
-      In</button>
+    <button mat-raised-button color="none" autosize [routerLink]="['login']" *ngIf="!auth.getUserConnected()">Login
+      </button>
     <button mat-raised-button color="none" autosize [routerLink]="['registro']" *ngIf="!auth.getUserConnected()">Sign
       up</button>
     <button mat-button [matMenuTriggerFor]="menu" *ngIf="userConect" id="nombre">{{userConect.nombre}}</button>

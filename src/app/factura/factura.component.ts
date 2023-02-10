@@ -94,7 +94,7 @@ export class FacturaComponent {
 
       doc.setFontSize(35);
       doc.setFont('helvetica', 'normal', 'bold');
-      doc.text("DATOS DE FACTURA", 15, 20);
+      doc.text("FACTURA", 15, 20);
 
       doc.setFontSize(14);
       doc.text("CLIENTE", 15, 35);
