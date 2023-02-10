@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { AuthService } from './services/Auth.service';
 import { User } from './interfaces/User';
 import { RestService } from './services/rest.service';
-import { NgxSpinnerService } from 'ngx-spinner/public_api';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-root',
