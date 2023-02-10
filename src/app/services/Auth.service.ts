@@ -21,7 +21,6 @@ export class AuthService {
 
       this.usuariConectado = JSON.parse(localStorage.getItem('user'))
       this.usuarioConectado$.next(JSON.parse(localStorage.getItem('user')))
-      /* console.log(this.usuarioConectado$) */
     }
   }
 

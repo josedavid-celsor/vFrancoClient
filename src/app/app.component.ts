@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { AuthService } from './services/Auth.service';
 import { User } from './interfaces/User';
 import { RestService } from './services/rest.service';
+import { NgxSpinnerService } from 'ngx-spinner/public_api';
 
 @Component({
   selector: 'app-root',
@@ -14,10 +15,16 @@ export class AppComponent {
   constructor(
     public auth: AuthService,
     private cd:ChangeDetectorRef,
-    private rest:RestService
+    private rest:RestService,
+    private spiner:NgxSpinnerService
   ){
     this.rest.isWaiting.subscribe(resp=>{
       this.isWaiting = resp;
+      if(this.isWaiting){
+        this.spiner.show()
+      }else{
+        this.spiner.hide()
+      }
     })
   }
 

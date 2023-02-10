@@ -46,7 +46,6 @@ export class SubTipoProductoService {
                     observe.next(respuestaapi)
                     observe.complete()
                 }, error: (err) => {
-                    console.log(err)
                     observe.error(err)
                 }
             })
@@ -61,7 +60,6 @@ export class SubTipoProductoService {
                     observe.next(respuestaapi)
                     observe.complete()
                 }, error: (err) => {
-                    console.log(err)
                     this.matsnack.open("No se puede eliminar el Sub-Tipo Producto porque hay productos que dependen de él", "cerrar", { duration: 3000, panelClass: "notierror" })
                     observe.error(err)
                 }

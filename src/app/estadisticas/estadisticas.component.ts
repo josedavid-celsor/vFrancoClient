@@ -29,6 +29,5 @@ export class EstadisticasComponent {
       });
       this.datosGrafico = datos;
     })
-    console.log(datos);
   }
 }

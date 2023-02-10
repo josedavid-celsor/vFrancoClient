@@ -73,7 +73,6 @@ export class ProductoComponent {
    * @param producto
    */
   edit(producto: Producto) {
-    console.log(producto)
     producto ["tipoProducto"] = producto.subTipoProducto?.tipoProducto
     this.formTipo.changeTypeForm(producto, GF_TypeForm.EDITION, "Editar Producto")
     this.formTipo.disableControls(['id'])
@@ -89,7 +88,6 @@ export class ProductoComponent {
 
   delete(producto: Producto) {
     this.productoService.delete(producto.id).subscribe(() => {
-      console.log("borrado")
       this.getProductoPlist();
     })
   }

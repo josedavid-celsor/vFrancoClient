@@ -114,7 +114,6 @@ export class TipoProductoComponent implements OnInit {
 
   notification(event: { action: string, root: TipoProducto, subtipo?: SubTipoProducto }) {
     //cuando clicamos un elemento de tipo el subtipo viene vacio, por lo que gestionamos las acciones del tipo
-    console.log(event);
     this.formTipo.extraActions = []
     if (!event.subtipo) {
       switch (event.action) {
@@ -163,9 +162,7 @@ export class TipoProductoComponent implements OnInit {
     })
   }
 
-  ordenar(ordenacion: any) {
-    console.log(ordenacion)
-  }
+
 
   generate() {
     this.tipoProductoService.generate().subscribe(tipoProducto => {
@@ -174,7 +171,6 @@ export class TipoProductoComponent implements OnInit {
   }
 
   generateSubTipoProducto(){
-    console.log(this.formTipo)
    this.subTipoProductoService.generate(this.formTipo.APIRequest.creation.parametersToElement["tipoProducto"] as TipoProducto).subscribe(nuevoSubtipo=>{
     this.tablaTipos.addNewChildrenElement(this.formTipo.APIRequest.creation.parametersToElement["tipoProducto"], nuevoSubtipo)
    })

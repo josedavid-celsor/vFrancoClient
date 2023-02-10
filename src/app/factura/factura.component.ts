@@ -85,7 +85,6 @@ export class FacturaComponent {
 
   public downloadAsPDF(factura: Factura) {
     this.compraService.getByFactura(factura).subscribe(compras => {
-      console.log(this.user)
 
       const doc = new jsPDF();
 
@@ -114,13 +113,11 @@ export class FacturaComponent {
       for (const compra of compras) {
         bodyTabla.push([compra.producto.nombre, compra.cantidad, compra.producto.precio.toFixed(2), compra.cantidad * compra.producto.precio])
         subTotal += compra.cantidad * compra.producto.precio;
-        console.log(bodyTabla)
       }
       bodyTabla.push([' ', ' ', ' ', ' ']);
       bodyTabla.push([' ', ' ', 'Subtotal', subTotal.toFixed(2)]);
       bodyTabla.push([' ', ' ', 'IVA', factura.iva + " %"]);
       bodyTabla.push([' ', ' ', 'Total', factura.totalPrecio.toFixed(2) + " €"]);
-      //console.log(subTotal);
       autoTable(doc, {
         head: [['Nombre Producto', 'Cantidad', 'Precio Unitario', 'Importe']],
         headStyles: { fillColor: '#4054b4' },

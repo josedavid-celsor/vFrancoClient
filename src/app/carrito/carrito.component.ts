@@ -45,7 +45,6 @@ export class CarritoComponent {
         carrito.producto.fotos = carrito.producto.images.split("-")
       })
       this.carritoFilter = resp;
-      console.log(this.carritoFilter);
     })
   }
 }

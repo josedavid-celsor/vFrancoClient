@@ -44,7 +44,7 @@ edit(tipoProducto: TipoProducto){
         observe.next(respuestaapi)
         observe.complete()
       }, error:(err)=>{
-        console.log(err)
+  
         observe.error(err)
       }
     })
@@ -59,7 +59,6 @@ delete(id: number ):Observable<boolean>{
         observe.next(respuestaapi)
         observe.complete()
       }, error:(err)=>{
-        console.log(err)
         this.matsnack.open("No se puede eliminar el tipo Producto porque hay productos que dependen de él", "cerrar", {duration: 3000, panelClass: "notierror"})
         observe.error(err)
       }

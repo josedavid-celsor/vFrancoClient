@@ -37,9 +37,7 @@ export class ShopComponent {
     
     /** Recogemos desde la url el id del tipo de producto   */
     this.activatedRouted.params.subscribe(params=>{
-      console.log(params)
       this.codigo = params.codigo
-      console.log(this.codigo);
       this.getProductByType()
       this.getSubtipos()
     })
