@@ -26,12 +26,11 @@ export class RegistrosComponent {
 
   ngOnInit(){
     this.actRouted.params.subscribe(params=>{
+      console.log(params.verificationCode)
       if(params.verificationCode){
         this.authservice.verifyEmail(params.verificationCode).subscribe(verificado=>{
           if(verificado){
             this.router.navigate(['inicio']);
-          }else{
-            //Proximamente mostrar mensaje de error(Porfa no me olvides)
           }
         })
       }
@@ -53,9 +52,6 @@ export class RegistrosComponent {
   if(this.FormRegistro.valid){
     const usuario: User = this.FormRegistro.value
     this.authservice.register(usuario).subscribe()
-  }else{
-    //Mostrar notificación de error PROXIMAMENTE
-
-   }
+  }
   }
 }

@@ -99,6 +99,9 @@ export class AuthService {
   }
 
   verifyEmail(verification_code: string): Observable<boolean> {
+    console.log("Entro en verifyEmail");
+    console.log("---------------------");
+    console.log(verification_code);
     return new Observable<boolean>(observe => {
       if (verification_code) {
         this.restservice.peticionHttp(this.authapi + "/verifyMail" + "?verification_code=" + verification_code, "get"
