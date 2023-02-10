@@ -46,6 +46,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { InterceptorService } from './services/Interceptor.service';
 import { PasarelaPagoComponent } from './pasarela-pago/pasarela-pago.component';
 import { RecuperacionComponent } from './recuperacion/recuperacion.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 
@@ -98,7 +99,8 @@ import { RecuperacionComponent } from './recuperacion/recuperacion.component';
     NgxChartsModule,
     ////Es un componente Stand Alone, que es un componente independiente
     PasarelaPagoComponent,
-    GFMatErrorMessagesDirective
+    GFMatErrorMessagesDirective,
+    NgxSpinnerModule
   ],
   providers: [
     AuthGuard,
