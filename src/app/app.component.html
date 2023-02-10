@@ -6,10 +6,10 @@
     </button>
      <a [routerLink]="['inicio']" id="logo"><img width="130" height="60" src="../assets/img/logo.png"></a>
     <div class="opcionesMenu">
-      <button mat-flat-button color="none" autosize [routerLink]="['shop/PRODUCTOSQUIMICOS']">Químicos</button>
-      <button mat-flat-button color="none" autosize [routerLink]="['shop/CELULOSAYTEXTILES']">Celulosas/textiles</button>
-      <button mat-flat-button color="none" autosize [routerLink]="['shop/COMPLEMENTOSDEHIGUIENE']">Higiene</button>
-      <button mat-flat-button color="none" autosize [routerLink]="['shop/MAQUINADELIMPIEZA']">Maquinaria</button>
+      <button mat-flat-button color="none" autosize [routerLink]="['shop/PRODUCTOSQUIMICOS']">QUÍMICOS</button>
+      <button mat-flat-button color="none" autosize [routerLink]="['shop/CELULOSAYTEXTILES']">CELULOSAS/TEXTILES</button>
+      <button mat-flat-button color="none" autosize [routerLink]="['shop/COMPLEMENTOSDEHIGUIENE']">HIGIENE</button>
+      <button mat-flat-button color="none" autosize [routerLink]="['shop/MAQUINADELIMPIEZA']">MAQUINARIA</button>
 
       <!-- ng container es como un div que no se renderiza luego, util para meter condiciones y bucles sin partir la extructura del html -->
       <ng-container *ngIf="auth.isAdmin()">
@@ -61,7 +61,7 @@
   <footer>
     <div>
       <h2>Productos</h2>
-      <a [routerLink]="['tipoProducto']">QUÍMICOS</a> <br>
+      <a [routerLink]="['shop/PRODUCTOSQUIMICOS']">QUÍMICOS</a> <br>
       <a [routerLink]="['shop/CELULOSAYTEXTILES']">CELULOSAS/TEXTILES</a><br>
       <a [routerLink]="['shop/COMPLEMENTOSDEHIGUIENE']">HIGIENE</a><br>
       <a [routerLink]="['shop/MAQUINADELIMPIEZA']">MAQUINARIA</a>
