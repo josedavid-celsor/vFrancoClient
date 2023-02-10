@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { AuthService } from './services/Auth.service';
 import { User } from './interfaces/User';
+import { RestService } from './services/rest.service';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,16 @@ import { User } from './interfaces/User';
 })
 export class AppComponent {
   userConect: User;
+  isWaiting = false;
   constructor(
     public auth: AuthService,
-    private cd:ChangeDetectorRef
-  ){}
+    private cd:ChangeDetectorRef,
+    private rest:RestService
+  ){
+    this.rest.isWaiting.subscribe(resp=>{
+      this.isWaiting = resp;
+    })
+  }
 
   title = 'vFrancoClient';
 
