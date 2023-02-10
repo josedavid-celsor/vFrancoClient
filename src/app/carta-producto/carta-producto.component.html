@@ -1,6 +1,6 @@
 <mat-card class="my-card">
     <mat-card-title>{{producto.nombre}}</mat-card-title>
-    <img mat-card-image [src]="'http://localhost:8082/Producto/files/'+producto.fotos[0]" alt="Photo of a Shiba Inu">
+    <img mat-card-image [src]="apibackEnd + '/Producto/files/'+producto.fotos[0]" alt="Photo of a Shiba Inu">
     <mat-card-subtitle>Precio: {{producto.precio}}€</mat-card-subtitle>
     <mat-card-subtitle>Cantidad: {{producto.cantidad}}</mat-card-subtitle>
     <mat-card-actions>
