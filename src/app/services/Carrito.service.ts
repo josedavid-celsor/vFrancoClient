@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Carrito } from '../interfaces/Carrito';
 import { Producto } from '../interfaces/Producto';
+import { AuthService } from './Auth.service';
 import { RestService } from './rest.service';
 
 @Injectable({
@@ -11,7 +13,7 @@ import { RestService } from './rest.service';
 export class CarritoService {
   carritotoApi: string = "Carrito";
 
-constructor(private restservice: RestService, private matsnackbar: MatSnackBar) { }
+constructor(private restservice: RestService, private matsnackbar: MatSnackBar, private auth: AuthService, private router: Router) { }
 
 getCarrito(): Observable<Carrito[]> {
   return new Observable<Carrito[]>(observe => {
@@ -27,13 +29,20 @@ getCarrito(): Observable<Carrito[]> {
 
 insert(producto: Producto){
   return new Observable<Carrito>(observe=>{
-    this.restservice.peticionHttp(this.carritotoApi + "/" + producto.id, "post").subscribe(respuestaapi=>{
-      this.matsnackbar.open("Se ha agregado tu producto al carrito", "X", {
+    if(this.auth.getUserConnected()){
+      this.restservice.peticionHttp(this.carritotoApi + "/" + producto.id, "post").subscribe(respuestaapi=>{
+        this.matsnackbar.open("Se ha agregado tu producto al carrito", "X", {
+          duration: 3000
+        })
+        observe.next(respuestaapi)
+        observe.complete()
+      })
+    }else{
+      this.matsnackbar.open("Debes iniciar sesión", "X", {
         duration: 3000
       })
-      observe.next(respuestaapi)
-      observe.complete()
-    })
+      this.router.navigate(['login'])
+    }
   })
 }
 
