@@ -100,7 +100,6 @@ export class RestService {
         this.isWaiting.emit(false);
         observer.error(error);
         observer.complete();
-        console.log(error.message)
         this.matsnackbar.open(error.error.message, "X", {
           duration: 3000
         })

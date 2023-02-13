@@ -26,7 +26,6 @@ export class RegistrosComponent {
 
   ngOnInit(){
     this.actRouted.params.subscribe(params=>{
-      console.log(params.verificationCode)
       if(params.verificationCode){
         this.authservice.verifyEmail(params.verificationCode).subscribe(verificado=>{
           if(verificado){

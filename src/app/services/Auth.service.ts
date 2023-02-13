@@ -12,10 +12,11 @@ export class AuthService {
   usuariConectado: User;
   usuarioConectado$: Subject<User> = new Subject();
   matSnackbar: MatSnackBar = inject(MatSnackBar);
+  restservice: RestService = inject(RestService);
+  routed: Router = inject(Router);
 
   constructor(
-    private restservice: RestService,
-    private routed: Router
+
   ) {
     if (localStorage.getItem('user')) {
 
@@ -99,9 +100,6 @@ export class AuthService {
   }
 
   verifyEmail(verification_code: string): Observable<boolean> {
-    console.log("Entro en verifyEmail");
-    console.log("---------------------");
-    console.log(verification_code);
     return new Observable<boolean>(observe => {
       if (verification_code) {
         this.restservice.peticionHttp(this.authapi + "/verifyMail" + "?verification_code=" + verification_code, "get"

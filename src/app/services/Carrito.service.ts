@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -12,8 +12,10 @@ import { RestService } from './rest.service';
 })
 export class CarritoService {
   carritotoApi: string = "Carrito";
-
-constructor(private restservice: RestService, private matsnackbar: MatSnackBar, private auth: AuthService, private router: Router) { }
+  restservice: RestService = inject(RestService);
+  matsnackbar: MatSnackBar = inject(MatSnackBar);
+  auth: AuthService = inject(AuthService);
+  router: Router = inject(Router);
 
 getCarrito(): Observable<Carrito[]> {
   return new Observable<Carrito[]>(observe => {
