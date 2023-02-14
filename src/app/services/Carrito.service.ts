@@ -56,6 +56,7 @@ comprarTodo(idIva: number){
       })
       observe.next(respuestaapi)
       observe.complete()
+      this.router.navigate(['inicio']);
     })
   })
 }
