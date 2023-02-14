@@ -13,7 +13,6 @@ export class ProductoService {
   productoApi: string = "Producto";
   constructor(private restservice: RestService, private oHttp: HttpClient) { }
 
-  /* http://localhost:8082/producto?page=1&size=5&direction=Sort.Direction.DESC */
   getProductoPlist(page?: number, size?: number, termino?: string, id_usertype?: number, strSortField?: string, strOrderDirection?: string, codigo?: string, subTipo?: string): Observable<Page<Producto>> {
 
     let pagination = "?";
